@@ -1,0 +1,554 @@
+{
+	"info": {
+		"_postman_id": "27702693-7b35-4103-9537-6487a3069d1b",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23449831"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Forget Password",
+					"item": [
+						{
+							"name": "Send Reset Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}password/email",
+									"host": [
+										"{{baseURL}}password"
+									],
+									"path": [
+										"email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password With Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "marla@g.c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}password/reset",
+									"host": [
+										"{{baseURL}}password"
+									],
+									"path": [
+										"reset"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Send Confirmation Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "marla",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshots/matcap.jpg"
+										},
+										{
+											"key": "address",
+											"value": "damas",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "photo_profile",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshots/door.jpg",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/send-confirmation-code",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"send-confirmation-code"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm Registration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "verification_code",
+											"value": "53722",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/confirm",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"confirm"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}profile",
+							"host": [
+								"{{baseURL}}profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2QzYjE0Y2RhOGEyMDEzYjE3N2M3NWU4MDhiNjY4NGVhZTNhOWFiNWIzYzY2ZjE1MDU0NzEyMTAyMTc3NDQ2ZDY3MzliNTZjNmVjYWZmZWUiLCJpYXQiOjE2Nzk4MjQ1MTguMzQ3NDI3LCJuYmYiOjE2Nzk4MjQ1MTguMzQ3NDI5LCJleHAiOjE3MTE0NDY5MTguMzM2Miwic3ViIjoiMSIsInNjb3BlcyI6W119.dabnZlCU4a3Sf-c8WrEl2o5Zyyj_o1-UJcLjwrRYodz9kQkx1jZx5hUjUoNjTTeg6ZAra8SfZc6fUkg8Cr-OuvBwSj1L_5iKGCqLrSQaC3jiZFgZgqeehW30Z5buj6ovk8emZ00DOtWasWXqaQg1XvroJ2gvYyuVuGXaRa1ItOetLH5i2_DAg7-RT2EFEJDs3YGQHVrViObzIO-F5Hv-YTLiEwCeI-Jt_Ov4qxZ16ZRCPAbjP50u3Ew5SFgjp28oT2Sj9HL3k_YqMywRZc0XCpLrCa354rz58rRV5Yow948HtOb-_BCuzAysiUMx3eXuLpf-DeIR0AgotfFrB298gwTREsQ-92nhW-cYuSM-H6UURKp_pwI6ut4zuWtDeNzb9J2QAP-XbcdUKGQNNuPuKRFuvyR8GWF_z6wQRGSnHsy9boP8QFXiRpbSd7NFH6oxp31-23RJKakxswRsbLe5oYCxl7yqjO4rJTnTKOr03QFtQwQ9YGriHDlkpO7STLXbumciIJ3gEXYRXFogZpcjcQ6ah1AUYwTMhvGULBv0SUtX2yv5J5sBueIbMBNg58qs-NnPiySX0ltorkdMKb4ngOPIJk2GO1hajHf2wxZF-FPvEa_1tWcyFI7a5yfiPXf1kNEUPtVbrzOAZPBtvweq2X4BajDW78xxFBC24xPpcaQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODI3YjZjZTFlYTlmOGQyY2IzMDMzNmE5ZTBhMTM2MTRkZDI0MDU4OTdjNzY0OTA3MmYzYTdiY2UyZTIwNGQ3YzNjNWM2YTYxZTFhNjgzODIiLCJpYXQiOjE2Nzk4MTEzODAuNTIxNDEzLCJuYmYiOjE2Nzk4MTEzODAuNTIxNDE1LCJleHAiOjE3MTE0MzM3ODAuNTEyNTI3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.izFrHdx85Ks7gHpedyIii733rfCsVXOeWP-ZLnk-zYjf6I3IedbWgMjugjmLwIrPiGN9j-FzPWXdmQruS2lG5nHZHlbzLE5xwJ2-FzxKvghptsHyIw8sEongGXT_FFueHyj7jJQaZn1XnEZs7qeEJtatZaA1KlERaKlyyK-lJFdpCLfr9Io4KW86fGNjXr4c_M98gt0RY8II6EabJfb08aS_d2qxzLoAdlCX0cG5WAGDwRIbt6yE8VJKMBGftQBstnk2aRiF0hX5jOr1t_iyijcNKYnP1zcGcAZ3yKz2X-W0WwjjyBZCcZ91l3bDKCMUAJz9DlwP2L2v8CbHNZkGo83bUID3pbdqjbRhcmprk5SAnuTufVNy_9ZAmtwJRp_7t35SOQA11kRBaRK8MUvXncsUVn3J1jspJZD6t517lYtsZuCQi_E3gBcU_g7qYgq-XaiDYI0wf7A77DT1xSc_cJtWh3vk3w-kqWUbTD3oQJjpp1wq8DhVdAH3ELUrQHTzVCKiAqVLs7rriNN7yNAcxoP_tbXNFn1wOMiBqgMGxR2c0GtmC3bwWuy6sU3V3EMkrGn6ZjxVO4cXQn4PQ5keVNbrQeskfWJIGK9FeN2dG7ZkzNDvjnSNNsDIjpG-VLm-jDHUotb5RbIMunIoY1i8J-CD6XUWCp5OLgWDa943yDo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}logout",
+							"host": [
+								"{{baseURL}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marla@g.c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}login",
+							"host": [
+								"{{baseURL}}login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List All product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}list-book",
+							"host": [
+								"{{baseURL}}list-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Seller Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}list-book",
+							"host": [
+								"{{baseURL}}list-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWZmMmQ5MzA4ZTEwZGRlMWFkYWUwMTliZjljZDhjNTdkMWQ1YzE5ZjI2ODgxOWEzMDkwZWYyNTRhYWVlN2M0ZmM5MTJiNTNjNjg0ZmJiMzkiLCJpYXQiOjE2Nzk4NDgyMTAuMTMzMzg2LCJuYmYiOjE2Nzk4NDgyMTAuMTMzMzg4LCJleHAiOjE3MTE0NzA2MTAuMTIxNjE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.tFC0otbA9kK_auaYxIDE88F_aZir4twXNukP5ASzFPQt5frE8viv3vScC20pUnutEVkAi1JS4siISCUUMBRLqGJMqHv66RZYmqgmKxkWRET7t0nZY_0oYFj0vZ2RnkBWNovNKo0lwJG1e3gEVMrx_izVyHkqmIEjT0WbdfgNXGMdeTwBo1NeO_fxSYA4DnuKLBHSZXYDudv3Ff4baHRbL8ikTTjKXIJ4gQMwxZZchJHTQxuI37hM1vvaxcF16IYTLdzuaK_dnmznLLzcQpPb2zAX2Vw6QoS-wy9sxp7uhGWs2ORzXzuADvWGocgiw0Ln5eYAjD4yq8mv54zpATqyOeq5Av5ZIPdEnOt3YY7tKPMERTtHWrukPBQO3AaXJgZelQKBhl8UQb_wwfwGvmjC10hcvRD5QqiaRDE5mTfT3d0ruCJA78D2Auv9pYHYtjsXj3AuM2C2B8XCh1LyyJLC_au1_IrBeU_-82kNedFwlB_GYEmuS9lcyk1wdxdkrtHOrzUOv7Q3977satTwRhleTnXxGLp7S709Yq-GhF6Pfarr3f8NU3NuHEQ6AlFs0JTKnXqMS-Lz6pBMnqTkWahbxLj65PXrEeRyejqV81kI07ICYpSr02epdGStaWM9_w5ZQpgTPFKScD7U_4h8idT1AjJ7_jG4xodKiqokUYoQIi4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}single-book/1",
+							"host": [
+								"{{baseURL}}single-book"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWZmMmQ5MzA4ZTEwZGRlMWFkYWUwMTliZjljZDhjNTdkMWQ1YzE5ZjI2ODgxOWEzMDkwZWYyNTRhYWVlN2M0ZmM5MTJiNTNjNjg0ZmJiMzkiLCJpYXQiOjE2Nzk4NDgyMTAuMTMzMzg2LCJuYmYiOjE2Nzk4NDgyMTAuMTMzMzg4LCJleHAiOjE3MTE0NzA2MTAuMTIxNjE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.tFC0otbA9kK_auaYxIDE88F_aZir4twXNukP5ASzFPQt5frE8viv3vScC20pUnutEVkAi1JS4siISCUUMBRLqGJMqHv66RZYmqgmKxkWRET7t0nZY_0oYFj0vZ2RnkBWNovNKo0lwJG1e3gEVMrx_izVyHkqmIEjT0WbdfgNXGMdeTwBo1NeO_fxSYA4DnuKLBHSZXYDudv3Ff4baHRbL8ikTTjKXIJ4gQMwxZZchJHTQxuI37hM1vvaxcF16IYTLdzuaK_dnmznLLzcQpPb2zAX2Vw6QoS-wy9sxp7uhGWs2ORzXzuADvWGocgiw0Ln5eYAjD4yq8mv54zpATqyOeq5Av5ZIPdEnOt3YY7tKPMERTtHWrukPBQO3AaXJgZelQKBhl8UQb_wwfwGvmjC10hcvRD5QqiaRDE5mTfT3d0ruCJA78D2Auv9pYHYtjsXj3AuM2C2B8XCh1LyyJLC_au1_IrBeU_-82kNedFwlB_GYEmuS9lcyk1wdxdkrtHOrzUOv7Q3977satTwRhleTnXxGLp7S709Yq-GhF6Pfarr3f8NU3NuHEQ6AlFs0JTKnXqMS-Lz6pBMnqTkWahbxLj65PXrEeRyejqV81kI07ICYpSr02epdGStaWM9_w5ZQpgTPFKScD7U_4h8idT1AjJ7_jG4xodKiqokUYoQIi4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}delete-book/3",
+							"host": [
+								"{{baseURL}}delete-book"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWZmMmQ5MzA4ZTEwZGRlMWFkYWUwMTliZjljZDhjNTdkMWQ1YzE5ZjI2ODgxOWEzMDkwZWYyNTRhYWVlN2M0ZmM5MTJiNTNjNjg0ZmJiMzkiLCJpYXQiOjE2Nzk4NDgyMTAuMTMzMzg2LCJuYmYiOjE2Nzk4NDgyMTAuMTMzMzg4LCJleHAiOjE3MTE0NzA2MTAuMTIxNjE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.tFC0otbA9kK_auaYxIDE88F_aZir4twXNukP5ASzFPQt5frE8viv3vScC20pUnutEVkAi1JS4siISCUUMBRLqGJMqHv66RZYmqgmKxkWRET7t0nZY_0oYFj0vZ2RnkBWNovNKo0lwJG1e3gEVMrx_izVyHkqmIEjT0WbdfgNXGMdeTwBo1NeO_fxSYA4DnuKLBHSZXYDudv3Ff4baHRbL8ikTTjKXIJ4gQMwxZZchJHTQxuI37hM1vvaxcF16IYTLdzuaK_dnmznLLzcQpPb2zAX2Vw6QoS-wy9sxp7uhGWs2ORzXzuADvWGocgiw0Ln5eYAjD4yq8mv54zpATqyOeq5Av5ZIPdEnOt3YY7tKPMERTtHWrukPBQO3AaXJgZelQKBhl8UQb_wwfwGvmjC10hcvRD5QqiaRDE5mTfT3d0ruCJA78D2Auv9pYHYtjsXj3AuM2C2B8XCh1LyyJLC_au1_IrBeU_-82kNedFwlB_GYEmuS9lcyk1wdxdkrtHOrzUOv7Q3977satTwRhleTnXxGLp7S709Yq-GhF6Pfarr3f8NU3NuHEQ6AlFs0JTKnXqMS-Lz6pBMnqTkWahbxLj65PXrEeRyejqV81kI07ICYpSr02epdGStaWM9_w5ZQpgTPFKScD7U_4h8idT1AjJ7_jG4xodKiqokUYoQIi4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}update-book/1",
+							"host": [
+								"{{baseURL}}update-book"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzg5YjY4OGQyYThmOWFmODFjYzFjMWZhMTI2MDBkMjg0MjQwMjVlMTg5ZjgwODNmOTg1YTE3M2EyZmMzMWJkMjEzODM5ZjlmYjQzMDdlNmEiLCJpYXQiOjE2Nzk4MjgyMjkuNjA4Nzg4LCJuYmYiOjE2Nzk4MjgyMjkuNjA4NzksImV4cCI6MTcxMTQ1MDYyOS41OTY3ODUsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.lM1b-vxGZivj3zor9MugViIThsls0tAKdTKhnj5ZdHPRf7MULUIbC2Hc3ie_fkGsrr9tQPk1sueN6B3BvKodS6M-rYLmStnhWbFtWpY8HNtzS_JFXsJbgZuPzKV5RC49n5zCxBo3l3zAl70qq8JYxDpwJIRc4PCo_V09ub6SI9jQju-_ccFQKDH8nRM7ZHbRBM1BzcApnjKBCGpTMb4YIyitgQn_l8k6xhu5G51oqVpPQ3OwUvzZfCX0X_BBYB84d3CYHVAoGZtjzB_BYABmgOzOXs0QgsoNmTLc_Op95C1u_5T0rM80mcqBQavVsqavbE6_teDmDJIfF8PKy-TlBSxKGDdrhWBSk-TCQcJI6VQxKGyMDUi3Wxz9Me9Iq7nSVkWWVTK58xT4G6YjmWCwYVe81Tkr7rv05dQMNE6dyhwS4cvtdmn7D5AqKj988_M33qPHYm84-kkcTY5dt6aR4BNKpgaunRs8SzUPiJeTzNnYDbTPCqQ3NHWLISlzF4Zouh73m-CTR8BUwWPZo2lPxcMo4YypoxXSL2yvQeCjaz5dAdYGERliSzL0KTVBIRh5PUwzoQ8WA3zAyHi_L2YPhiK4NSiYS_qmppdCCKo8VBT5gMOmbsgHb-5EFa7SaEZAntN9--lQTqXguT7_jYGBZOw4MDTsL0uc8KKBExFkykc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "marla",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "success",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "book_cost",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}create-book",
+							"host": [
+								"{{baseURL}}create-book"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://127.0.0.1:8000/api/"
+		}
+	]
+}
