@@ -1,0 +1,2 @@
+please put the code : "<?php echo e($resetCode); ?>"in the field of the confirmation code then you can reset your password.
+<?php /**PATH C:\xampp\e-commerce\resources\views/reset.blade.php ENDPATH**/ ?>
