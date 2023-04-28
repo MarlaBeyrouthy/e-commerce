@@ -1,0 +1,1642 @@
+{
+	"info": {
+		"_postman_id": "27702693-7b35-4103-9537-6487a3069d1b",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23449831"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Forget Password",
+					"item": [
+						{
+							"name": "Send Reset Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}password/email",
+									"host": [
+										"{{baseURL}}password"
+									],
+									"path": [
+										"email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password With Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "12411241",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "ramibeyrouthy7@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "Ar8q86",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12411241",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}password/reset",
+									"host": [
+										"{{baseURL}}password"
+									],
+									"path": [
+										"reset"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "Yzgruk",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Register information",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "marla",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshots/door.jpg"
+										},
+										{
+											"key": "address",
+											"value": "liban",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "hi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/send-confirmation-code",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"send-confirmation-code"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm Registration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "verification_code",
+											"value": "53722",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/confirm",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"confirm"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register 2",
+					"item": [
+						{
+							"name": "Verify Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "marla",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshots/door.jpg"
+										},
+										{
+											"key": "address",
+											"value": "liban",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "hi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/send-confirmation-code",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"send-confirmation-code"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "marla",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshots/door.jpg"
+										},
+										{
+											"key": "address",
+											"value": "liban",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "hi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/send-confirmation-code",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"send-confirmation-code"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Verification Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "beyrouthymarla@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "verification_code",
+											"value": "53722",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}register/confirm",
+									"host": [
+										"{{baseURL}}register"
+									],
+									"path": [
+										"confirm"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Wishlist",
+					"item": [
+						{
+							"name": "Remove From Wishlist",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}wishlist/1",
+									"host": [
+										"{{baseURL}}wishlist"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add To Wishlist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}wishlist/1",
+									"host": [
+										"{{baseURL}}wishlist"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Wishlist",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}wishlist",
+									"host": [
+										"{{baseURL}}wishlist"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Favorite Persone",
+					"item": [
+						{
+							"name": "Remove From Favorites",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}favorites/1",
+									"host": [
+										"{{baseURL}}favorites"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add To Favorites",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "yJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTdkYTFiMGZlN2FlYzA2ZWJiODllNDk4MjA3NmM3ZGRkYzBjZDY3ZDM2Zjg5NGQ0OTFjODI0N2YyNWIwMzc2MWJhMTAyYjgzZDU2NzlhMTgiLCJpYXQiOjE2ODI1MDE5ODguODYwMjI1LCJuYmYiOjE2ODI1MDE5ODguODYwMjI4LCJleHAiOjE3MTQxMjQzODguODUwMTgzLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.pEA66I1CU1S_UxAHO-YCEMf9qk8U0Hy7yVoMym_3vCrxn1dksWphR8DneGcjFwG_MTfCtmrvKB1ilO15AxxWjaoyQRzYPJ65I0M54oo3LF-Bxvj0eaWrr5rBECDkPdIzc2xNr1Rx4uYSzGz2h4zUnmK87r6FucePE5UJgGJ2BUOeJdfMaL_O7n1IBdBAXLQZGo-9Zq8y7qfH2QlG-TNRA4Jo_dB88TXGDD0bRy-8iLXS-0ij9WSjGoSw3C9xM8vM8TkVlUi3p2xKFKzVF-O2YucjIXkAWHrFQTPtahAeXkbCeozDUimAjnJpjw7tv2G7wRFtS3oB-8-lRa26SI9GlRdWsBoxuQ2iVZZoOWG_aY2dq80Flln3JC3s_mQc8j7f1qjwUcEjZpMICOxBWmI5FtDVT-GYsSR5fZgvia_EbaNvLL4-1nQGzV52nPELtyO9_lq09HZz2GXfO-lKILzzx0qmcVSilSdw_AWibNXPX9V2fQivQF-JntwxbpUO3mvmcIL9NTZ_K4K1wABYCeoKDoNl-Q0RYu4NEebnB3ju_CdKFx3elq1lt_3rk5wxxl5FCYMAByMja1OBZYFuk3XKA1jxeNzJjTGC7EQPUg94y_jRcv-1X9Avy7HCc6B1FqBOCcxX9hkennsAsSmqou_-T74H93ZY6tuIQXzHX2lHWNQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGQwYmZkODU0ZDQ1NTMwMzM4YmYyYjkwZTI3NjNkMzU3YzBlMDE2ZWU3MzA1YTA1OTgwMTVjMzk2M2RiYjk0MmIxNjVjMTIzZjRjNGQ4NWQiLCJpYXQiOjE2ODI0ODQ3NjIuNDUwMjI5LCJuYmYiOjE2ODI0ODQ3NjIuNDUwMjMyLCJleHAiOjE3MTQxMDcxNjIuNDM3ODk4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AIMMC60OW0vxPwCadFIKQJv2VWDkY6Amt-1E6vgi0IFkzacFOU1COazhUzTlQVRT7LbIOZsqjqvUf1BtaS-6xpC0abSalc2pnYGscCEOvHnvTfk3mmiR1Ihfrqxg3NhAWu4lLjTgKFEz1wZJBbtl7LWyIaCEKJTfXq5TZd17LzmiNoL2tf_hlxz7kTwlA58KvqHc2sf1V3UambZje7fM7syL50xtP6tWg71WM1CnZ74ckSaVMfNa4gimNmJaPArvaqt5likew3VQuXFhiqxZA2M_ziBTzRYS-ZnYfLeLaZx55pcbm6M3JqFs8ikAKat7IefqKK0uyVQayfOmEVUL_mWtQyBRNlo0SOHaFPjT7a3-rozlYZ4Z8ahqFW_tjCQmmOrvi8bhule1eTsDInBTocrpWKFpFnHGVsnPYsrN5I_mH_9VJOSHuPg4Ei6OT20xxBQfAj8ngOIoCvQAScgGmVzK4jXLVs84nq6csQZdoGm_dk8UQW4KESFQURujnCIQcoxhVLya1Z-Y5ZS47i68nnsEa5uPrwgSLvWYkASMOOfLiELCXnsVK7FQJh5ZQRlj2aLAhvgPX_lvMpEihiRjCR9gEP83Xl7LC53GHDs6JRWFFywyT4E8B0wxeSiiCEQiCef0uBuotohCv4Aq1evBnK7M4r-LCkVrhdtpl2XW8X0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}favorites/1",
+									"host": [
+										"{{baseURL}}favorites"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Favorite",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}favorite",
+									"host": [
+										"{{baseURL}}favorite"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "Set Review",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiNWYwNmI3YWU3ZTJiNjQzN2U1ZmVkMmRjZTRmOWZkNmQxNTc1YjFiNDc2MGVmOTAwMTI3MGU1NDAxMzUwNWU3NjljYzE3MzkyZDQxYTYiLCJpYXQiOjE2ODIxMDA0OTkuNjU0NjQ5LCJuYmYiOjE2ODIxMDA0OTkuNjU0NjUyLCJleHAiOjE3MTM3MjI4OTkuNjQ0OTMzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.ZunmltH4DfVW-4lvcGHdPg193Co4IX7-_jeDXYz9n6hugah0vyTzvHJZ3AE2E3DD1zmFgABL_KAhmswPCEfkk7HtmYquLrIf4uhAhWaEX6W1l5utuLl9kCi2Mcl2zBgAyfQrMng4jJ829gQ5ny9XgP5yaDpZLrvZjbMTbOlJPk0KqZxK5sdveXO55crLwAxSnGaFybAaijE7MQW0t_pI8FdngQiSKzVGJ17ag77XVmze-ZUsNdv3_ioTKdyEDaslceKu_TRnrrnVkh7B9zEGI4QHNmm7Dm_aiIXJ4HcCpUHioNa516_wtxVHCfF-lmzEx-DrCshtcVSHDVli2_S45aEMGxuSd9jPRZ3_ScynseFlnw0VegvwLHD-dvpuuppiBiBbK8KNstj7Yi6FCVNO69zaFs9ZGMGUO6xRBKjTK084OyF8dysudxTMos96gb3ftxlRzNROaNAB2AZcIBoikQY9Wph8wQ2rx2eX2v4KH4N0alB6von_SwlwjMIo7d9DyeZWhZ0llBJMgcCuj7vkSwzQLm4JidWW7bjxoH2q1nEX_xLKUwvkcQLCypXYYmhFeJcnyreJwW9ZQKIlaZWmzg6SxJmKHg5cxN72s5NntqY5VUUJ5l-bFD5jGx3-xICtmVKChO3pB4bsTiSxcTijSUhYMz9Fr1iwzax5D76gpg8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "rating",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "average",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}products/2/reviews",
+									"host": [
+										"{{baseURL}}products"
+									],
+									"path": [
+										"2",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Comment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2QzYjE0Y2RhOGEyMDEzYjE3N2M3NWU4MDhiNjY4NGVhZTNhOWFiNWIzYzY2ZjE1MDU0NzEyMTAyMTc3NDQ2ZDY3MzliNTZjNmVjYWZmZWUiLCJpYXQiOjE2Nzk4MjQ1MTguMzQ3NDI3LCJuYmYiOjE2Nzk4MjQ1MTguMzQ3NDI5LCJleHAiOjE3MTE0NDY5MTguMzM2Miwic3ViIjoiMSIsInNjb3BlcyI6W119.dabnZlCU4a3Sf-c8WrEl2o5Zyyj_o1-UJcLjwrRYodz9kQkx1jZx5hUjUoNjTTeg6ZAra8SfZc6fUkg8Cr-OuvBwSj1L_5iKGCqLrSQaC3jiZFgZgqeehW30Z5buj6ovk8emZ00DOtWasWXqaQg1XvroJ2gvYyuVuGXaRa1ItOetLH5i2_DAg7-RT2EFEJDs3YGQHVrViObzIO-F5Hv-YTLiEwCeI-Jt_Ov4qxZ16ZRCPAbjP50u3Ew5SFgjp28oT2Sj9HL3k_YqMywRZc0XCpLrCa354rz58rRV5Yow948HtOb-_BCuzAysiUMx3eXuLpf-DeIR0AgotfFrB298gwTREsQ-92nhW-cYuSM-H6UURKp_pwI6ut4zuWtDeNzb9J2QAP-XbcdUKGQNNuPuKRFuvyR8GWF_z6wQRGSnHsy9boP8QFXiRpbSd7NFH6oxp31-23RJKakxswRsbLe5oYCxl7yqjO4rJTnTKOr03QFtQwQ9YGriHDlkpO7STLXbumciIJ3gEXYRXFogZpcjcQ6ah1AUYwTMhvGULBv0SUtX2yv5J5sBueIbMBNg58qs-NnPiySX0ltorkdMKb4ngOPIJk2GO1hajHf2wxZF-FPvEa_1tWcyFI7a5yfiPXf1kNEUPtVbrzOAZPBtvweq2X4BajDW78xxFBC24xPpcaQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODI3YjZjZTFlYTlmOGQyY2IzMDMzNmE5ZTBhMTM2MTRkZDI0MDU4OTdjNzY0OTA3MmYzYTdiY2UyZTIwNGQ3YzNjNWM2YTYxZTFhNjgzODIiLCJpYXQiOjE2Nzk4MTEzODAuNTIxNDEzLCJuYmYiOjE2Nzk4MTEzODAuNTIxNDE1LCJleHAiOjE3MTE0MzM3ODAuNTEyNTI3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.izFrHdx85Ks7gHpedyIii733rfCsVXOeWP-ZLnk-zYjf6I3IedbWgMjugjmLwIrPiGN9j-FzPWXdmQruS2lG5nHZHlbzLE5xwJ2-FzxKvghptsHyIw8sEongGXT_FFueHyj7jJQaZn1XnEZs7qeEJtatZaA1KlERaKlyyK-lJFdpCLfr9Io4KW86fGNjXr4c_M98gt0RY8II6EabJfb08aS_d2qxzLoAdlCX0cG5WAGDwRIbt6yE8VJKMBGftQBstnk2aRiF0hX5jOr1t_iyijcNKYnP1zcGcAZ3yKz2X-W0WwjjyBZCcZ91l3bDKCMUAJz9DlwP2L2v8CbHNZkGo83bUID3pbdqjbRhcmprk5SAnuTufVNy_9ZAmtwJRp_7t35SOQA11kRBaRK8MUvXncsUVn3J1jspJZD6t517lYtsZuCQi_E3gBcU_g7qYgq-XaiDYI0wf7A77DT1xSc_cJtWh3vk3w-kqWUbTD3oQJjpp1wq8DhVdAH3ELUrQHTzVCKiAqVLs7rriNN7yNAcxoP_tbXNFn1wOMiBqgMGxR2c0GtmC3bwWuy6sU3V3EMkrGn6ZjxVO4cXQn4PQ5keVNbrQeskfWJIGK9FeN2dG7ZkzNDvjnSNNsDIjpG-VLm-jDHUotb5RbIMunIoY1i8J-CD6XUWCp5OLgWDa943yDo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}products/1/reviews",
+									"host": [
+										"{{baseURL}}products"
+									],
+									"path": [
+										"1",
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login+Logout",
+					"item": [
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2QzYjE0Y2RhOGEyMDEzYjE3N2M3NWU4MDhiNjY4NGVhZTNhOWFiNWIzYzY2ZjE1MDU0NzEyMTAyMTc3NDQ2ZDY3MzliNTZjNmVjYWZmZWUiLCJpYXQiOjE2Nzk4MjQ1MTguMzQ3NDI3LCJuYmYiOjE2Nzk4MjQ1MTguMzQ3NDI5LCJleHAiOjE3MTE0NDY5MTguMzM2Miwic3ViIjoiMSIsInNjb3BlcyI6W119.dabnZlCU4a3Sf-c8WrEl2o5Zyyj_o1-UJcLjwrRYodz9kQkx1jZx5hUjUoNjTTeg6ZAra8SfZc6fUkg8Cr-OuvBwSj1L_5iKGCqLrSQaC3jiZFgZgqeehW30Z5buj6ovk8emZ00DOtWasWXqaQg1XvroJ2gvYyuVuGXaRa1ItOetLH5i2_DAg7-RT2EFEJDs3YGQHVrViObzIO-F5Hv-YTLiEwCeI-Jt_Ov4qxZ16ZRCPAbjP50u3Ew5SFgjp28oT2Sj9HL3k_YqMywRZc0XCpLrCa354rz58rRV5Yow948HtOb-_BCuzAysiUMx3eXuLpf-DeIR0AgotfFrB298gwTREsQ-92nhW-cYuSM-H6UURKp_pwI6ut4zuWtDeNzb9J2QAP-XbcdUKGQNNuPuKRFuvyR8GWF_z6wQRGSnHsy9boP8QFXiRpbSd7NFH6oxp31-23RJKakxswRsbLe5oYCxl7yqjO4rJTnTKOr03QFtQwQ9YGriHDlkpO7STLXbumciIJ3gEXYRXFogZpcjcQ6ah1AUYwTMhvGULBv0SUtX2yv5J5sBueIbMBNg58qs-NnPiySX0ltorkdMKb4ngOPIJk2GO1hajHf2wxZF-FPvEa_1tWcyFI7a5yfiPXf1kNEUPtVbrzOAZPBtvweq2X4BajDW78xxFBC24xPpcaQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODI3YjZjZTFlYTlmOGQyY2IzMDMzNmE5ZTBhMTM2MTRkZDI0MDU4OTdjNzY0OTA3MmYzYTdiY2UyZTIwNGQ3YzNjNWM2YTYxZTFhNjgzODIiLCJpYXQiOjE2Nzk4MTEzODAuNTIxNDEzLCJuYmYiOjE2Nzk4MTEzODAuNTIxNDE1LCJleHAiOjE3MTE0MzM3ODAuNTEyNTI3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.izFrHdx85Ks7gHpedyIii733rfCsVXOeWP-ZLnk-zYjf6I3IedbWgMjugjmLwIrPiGN9j-FzPWXdmQruS2lG5nHZHlbzLE5xwJ2-FzxKvghptsHyIw8sEongGXT_FFueHyj7jJQaZn1XnEZs7qeEJtatZaA1KlERaKlyyK-lJFdpCLfr9Io4KW86fGNjXr4c_M98gt0RY8II6EabJfb08aS_d2qxzLoAdlCX0cG5WAGDwRIbt6yE8VJKMBGftQBstnk2aRiF0hX5jOr1t_iyijcNKYnP1zcGcAZ3yKz2X-W0WwjjyBZCcZ91l3bDKCMUAJz9DlwP2L2v8CbHNZkGo83bUID3pbdqjbRhcmprk5SAnuTufVNy_9ZAmtwJRp_7t35SOQA11kRBaRK8MUvXncsUVn3J1jspJZD6t517lYtsZuCQi_E3gBcU_g7qYgq-XaiDYI0wf7A77DT1xSc_cJtWh3vk3w-kqWUbTD3oQJjpp1wq8DhVdAH3ELUrQHTzVCKiAqVLs7rriNN7yNAcxoP_tbXNFn1wOMiBqgMGxR2c0GtmC3bwWuy6sU3V3EMkrGn6ZjxVO4cXQn4PQ5keVNbrQeskfWJIGK9FeN2dG7ZkzNDvjnSNNsDIjpG-VLm-jDHUotb5RbIMunIoY1i8J-CD6XUWCp5OLgWDa943yDo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}logout",
+									"host": [
+										"{{baseURL}}logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "marla@g.c",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}login",
+									"host": [
+										"{{baseURL}}login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "My Profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzViMGEwZjRkYzEzNGU3ZTg2ZGRmZjhmOWRjZGVlOGQ1ZDdjOTA3NjkxOWExZDk3M2IzNzU2YjVkMDg2MGJmODI0MmY4MzNmMmE4Mzg3MjQiLCJpYXQiOjE2ODI0MTYxNDAuMDc0OTc5LCJuYmYiOjE2ODI0MTYxNDAuMDc0OTgxLCJleHAiOjE3MTQwMzg1NDAuMDY1OTQxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.pNQbooo-i_hQtCvSScCMqCI5mC1T5HIHkHiSWgyB4JiIgpyv1FGN8gwGgmrvkdg0RZPoUf7PJqrdM7j8Mu7PhkIj-oPjLp5yC0ksvtsMB8BIL8qpchkgs2X5jaOUkd5Ydq2KxS65RJGZynfd9K2VROvIJ4FJLfmY04xMRIb_spNinLlusn2MeUHs-j5ZOikPXteVmlcmbNlRufB4TVXX1KC6zfQVP0-NZ3E893Jqzz4bM2jmPMQpS0bu2qFm_vA-S2UMwbjKmW7mSiw4KXwL2r8ceJ9uo4spkzN2zxL-tmxRJDYWPlv6Z5xfVR3en7-4dLatgRISvB93Y5sgT1SeE3sJXhRVIEXyLTK0yvyUV94GhS57QyeOcaBSp0kRE9BnWb_jxGuwzt9x5npGD_px1uMSCb_367E1JtMpRj1PcPDXunYQ5WafJj4BUXs4wZDkfkpKeUnmlkD1r0xhH4cfFgDj-NvP107SoGjY9qPvMTHaJebbHZ29Po-sqfWvIswd7FSs9_d3IEtkbqAstNZiR_uvVX6LYfGEATkYGL3d2PPWDv_WT7LaA2ZZhC6FnM86owk1jf6Ti4-ktydGMfAuZfui2TAVs9gzVr5huz4_e_bJjpmxOnipCrtqbRFUcNZRvcgSkHEWltHTuSP10CpIedlOLTywzcNNGJC01XurNTo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}myProfile",
+									"host": [
+										"{{baseURL}}myProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzQ1NzY2MzI0ZDJiMDJjODY4OWYxNmJlOGI4MjY3NDllYmNiYTVjYTA3MzQ1NTBlMmM2NmVlYWJlNjg4NTU0OWU4MmE3MzZhNWZjZjdhZGMiLCJpYXQiOjE2ODIzOTYwNDEuNDg3MTg1LCJuYmYiOjE2ODIzOTYwNDEuNDg3MTg3LCJleHAiOjE3MTQwMTg0NDEuNDc3NDQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.Peh0ChdbK4cgA28QBTCLMzDjLm-xZ7AfgncPGqqmoFDkBFLZrDLbVKsZVXpuJxLUYZw-QkJV2eOLxZeYYzo2hzF345Qi7hycVW4YZ-UkdyKdjggik8oThuUbkATUbu2y8i-zSkRzleHOvHN_6nhtjBHY5Arg8Y7voRBEY3XAxiK7mrs_q9P6Q6tnPwIdgxMrRlVLFoOJeda3_30wtsTjqMuKGbiNOkJ9644YKqBbnq1Q9uz288u5s1jQjOs57JuCBcepPrPyaOKRrHteSf90wMByncoDwkUYqGyjXzCV1OB_-LDFpgk3WhGxskfgkEZaNfAITj_r5JOpukIjoOMg4wuvPF4sV2Uig1xvgRcLO-3lmG5NR5q_LNFZqKG1jZU9WuWk-FPswy5uPGDvKU7lSPTpUGEZm37avgpF2F1IYEkih6dUFrPx68fi_Y5c1oK5TmYGjYEKe7h5w1PTlFJsMWjMHcffVJQ2Lrae6FT2F-5IZy2Xs6ePOLysGN2FXZ0gDFfxI7kHVlV-fBeo3ep3GD5BsOwls3vEaNzsnggqqdfgbSwDvrNu_UxvINrlQMudKmJOfgA8RYMnfvNliTG_145d81bZNFb9SJ1GMoINyzXBrXDk1Q3beqQJiv_ic1JRvVymmMGLHg42yeTxz_jETdkuv-_0y4hQceHZoj7SrPk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "87654321",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "ramibeyrouthy7@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "marloo",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "1111",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "87654321",
+											"type": "text"
+										},
+										{
+											"key": "new_password_confirmation",
+											"value": "87654321",
+											"type": "text"
+										},
+										{
+											"key": "current_password",
+											"value": "87654321",
+											"type": "text"
+										},
+										{
+											"key": "email ",
+											"value": "ramibeyrouthy7@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}user/profile",
+									"host": [
+										"{{baseURL}}user"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzViMGEwZjRkYzEzNGU3ZTg2ZGRmZjhmOWRjZGVlOGQ1ZDdjOTA3NjkxOWExZDk3M2IzNzU2YjVkMDg2MGJmODI0MmY4MzNmMmE4Mzg3MjQiLCJpYXQiOjE2ODI0MTYxNDAuMDc0OTc5LCJuYmYiOjE2ODI0MTYxNDAuMDc0OTgxLCJleHAiOjE3MTQwMzg1NDAuMDY1OTQxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.pNQbooo-i_hQtCvSScCMqCI5mC1T5HIHkHiSWgyB4JiIgpyv1FGN8gwGgmrvkdg0RZPoUf7PJqrdM7j8Mu7PhkIj-oPjLp5yC0ksvtsMB8BIL8qpchkgs2X5jaOUkd5Ydq2KxS65RJGZynfd9K2VROvIJ4FJLfmY04xMRIb_spNinLlusn2MeUHs-j5ZOikPXteVmlcmbNlRufB4TVXX1KC6zfQVP0-NZ3E893Jqzz4bM2jmPMQpS0bu2qFm_vA-S2UMwbjKmW7mSiw4KXwL2r8ceJ9uo4spkzN2zxL-tmxRJDYWPlv6Z5xfVR3en7-4dLatgRISvB93Y5sgT1SeE3sJXhRVIEXyLTK0yvyUV94GhS57QyeOcaBSp0kRE9BnWb_jxGuwzt9x5npGD_px1uMSCb_367E1JtMpRj1PcPDXunYQ5WafJj4BUXs4wZDkfkpKeUnmlkD1r0xhH4cfFgDj-NvP107SoGjY9qPvMTHaJebbHZ29Po-sqfWvIswd7FSs9_d3IEtkbqAstNZiR_uvVX6LYfGEATkYGL3d2PPWDv_WT7LaA2ZZhC6FnM86owk1jf6Ti4-ktydGMfAuZfui2TAVs9gzVr5huz4_e_bJjpmxOnipCrtqbRFUcNZRvcgSkHEWltHTuSP10CpIedlOLTywzcNNGJC01XurNTo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}getProfile",
+									"host": [
+										"{{baseURL}}getProfile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hamza Product",
+			"item": [
+				{
+					"name": "Hamza create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmNhZmI4N2JhZmQ2NmM0YWRmODg1YzViYzYzOWIwODZiMDk5YmNjNjc3NTJlOTMzNTY5N2Y1MTIyMDUxOTIxZGJmYzQ5ZTc0MjJmMjg3NjAiLCJpYXQiOjE2ODI2NjQ3ODAuNTMwMTUsIm5iZiI6MTY4MjY2NDc4MC41MzAxNTIsImV4cCI6MTcxNDI4NzE4MC41MjQ2NTQsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.Emiu8YsXIhQQgmi_OvpUFlgbuewWpqfeS0sdWlNcTjKTlW0Kf8t1bCW2A4sK9ucInBAkRdZufHgbVtL1EbBgyj_wBRu65UqKLu_askwqgz2g35A_0WilDRJTw-bfFXuORkTqX2GWYUBqaGbvmKl3WO9KKW6dVpB5BL4lJkD-4HILsw4VFMosBQMafF912LCsbPlbIbkWmaqrE6lPxQq5Q_AHTyJZXJZRcL66bikA2hNRiUZl7GCFha-go-TOMJsxzp5hdelCMO80Z-V6bRpW8tfIsBtQ2ebG8Yo2-xGZ1jDZHQAGqRKk2dD43mb8Ah8ZpgQRJ-rTCdrYNbZI8IQBFigEei-v5H9KAikMBaICce8efuxjgpaAOcZVoJtiW2i-NSWcf5OK1Xw9oWdfM2xRtYkRgjkOpvLybfxwRtY2G_vXnVcwUQcOJm5kakdpJBIolEwexnV_3LVDKKlWp0Ww-i5igXPUp8oj0wngcZMgAz3cOLMD-dZn0nUp6vHU_xRQh66a4RsUONzsS1orpgsajVQ_eovM9VLyXgiCxei_28o9tCSVFIFxAUy28Hpdy5VCNG7yJojO2ZLLksAK1_ITc-HLEIk2pRkuLEm92fyGGjIkP6Wg3QrEJBDsxHnYz8vDbwNz6aytGuCO9KPircONu4Om1NRcrZL22FhqdH45j8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pantalon",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "good",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "shoes",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "men",
+									"type": "default"
+								},
+								{
+									"key": "brand_name",
+									"value": "nike",
+									"type": "default"
+								},
+								{
+									"key": "material",
+									"value": "none",
+									"type": "default"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Pictures/Screenshots/alpha.jpg"
+								},
+								{
+									"key": "sizes[]",
+									"value": "large",
+									"type": "default"
+								},
+								{
+									"key": "sizes[]",
+									"value": "small",
+									"type": "default"
+								},
+								{
+									"key": "sizes[]",
+									"value": "43",
+									"type": "default"
+								},
+								{
+									"key": "colors[]",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "colors[]",
+									"value": "7",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}products",
+							"host": [
+								"{{baseURL}}products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza show product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}products/1",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza index product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}products",
+							"host": [
+								"{{baseURL}}products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGIyYTU3NmJkMzFkMGRiM2JiNDcwM2E5MGU5YjI3ZWFiNDNhZDdkNzU0YTc1OTk2MzM5MmI1ZDAyZDY1YzBhNjJmNjkxZTIwNjBmNGExMWQiLCJpYXQiOjE2ODE5OTEzODYuOTI5NDgyLCJuYmYiOjE2ODE5OTEzODYuOTI5NDksImV4cCI6MTcxMzYxMzc4Ni44MzczMDQsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.1aWd94rFV9XPMUFiDlnurUn47oM99yOmx5SXhw528f9MDvOqQhntHYJCt6nGeOGfpEnnek_gNg5Eyj-1RbONV-LeFJCj2cgEBaOGaG8Jy4Nldj8338rPED_YQIk6bFWfteMFFlyNQskhV9aLjyqgzVufDIwETMkrI7t2-jvdGnV712AdMsUkx1wXVphO8bPeBEWVSm8yDyfmanqricSudn6ScAekXrROZzhErpGLR4dFYuiuHUmjMjJV9vNExzdJBXNKZLLN8hoBVmvfFdo1zWXo088JqrGoJ64Q-EWVqp0EoL0IwBLqzh1TBESM7UMzJr0wxYTNIXKdpn8QQBi4zFntXj8PHSC5Qr-CzsDQ-moc4ZoRrJwG1iCHDoC3l5KZclVQqwcKgtAYEhnevVXxDMTKpHzzJ_D70UGmQZoYfgUJZAx4npqwJhlRAYUseon5N5WeLvAiPCc1ZsLfjDTud0Z2n92pQr0yHhAmtdOiGdr3fdr74a-HzaiVBstX00QW3MPzuCppoKOuoWPZYMUdUbso79nclBoKBLai1NzJIdTcmn4ery_J6KnCyLHEa9EuEZbpXeATydHwphAITaeD1XvxyxoZdKz284P_sXrrnjfy3kAK0WYBRpV3UUJY-iusdPj8QbbmAsdmkmIg_L_0Z_kf86fN_s8lljEk5-0rV8g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}products/3",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzFkMjRlMTY5ZGE2N2RlNDJkYjcwYzRjNzI0OWJkMjdkYzM2OTgyNzFiNWFmNDM0ODgwNmQ1Nzc0MjU0MDY0NzVlMzg4MDQ0ZDhiNzdkMTUiLCJpYXQiOjE2ODIzNDA4NjYuOTE4NTUyLCJuYmYiOjE2ODIzNDA4NjYuOTE4NTYxLCJleHAiOjE3MTM5NjMyNjYuODA2NzU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Gr-f6J6ZubEJJPCdnfy6c2in2zpbPDjuBkWTLxPTP_cf7b0V9Pgn_0r2IxdunrJa1PICLtBDIVvC09Y4DH8nQftA7uQbsec9DPyNPDZyicBlMQZ6GMSzm_mcr0oRipXiQPOLWJweih9cBXf1Em8GLCwWqW5L6mhcwUxti9XBPD9xltNJAiNorv8aeHpHNHC62NMlF24KkF-VC4SqoBiO78h8rxBIA_r5Of45pp0eaKH8NYIm_q9LcGXKT0qFTGsKmfCqK1LJmDhiknnYqjt-qqFoRlMK3qApzstF4ggPRBri_tfRub12X64l80VOGnn8wpd3Cin1Dti2_vKKqUbEVV6VV4fLVc4PQmvKGHAD9n1NPvNNRp4am4CvTuWFmUqGKo2GJqJ7kYjdsP4orWcgveT-LVg43zInQWu-NFFVef4QemaB-3ci_kxfW5QnM7P1EQPufZRdJw4CkOmu1WFRJkxGvRJdbCYmyRlgZYqj7191AKt4lzGEiLNM1e3TVa82RDhv6y1ZxWL0O5rS0UQfiOlKylUnDu7e2AQB64DSFvjZjSftksDwYkQPYLLCcWbaMFg3WLUFeVXlT6FPV4LFQN5AKipNDuys31ZGmiAY3bpEuRc6l_EwTgBH5xt0pdH49TJu6SWgSRaiX9WeKNkD5U2v8ExyA-f3okvxjV8I7gs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "testttttffff",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "shoes",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "men",
+									"type": "default"
+								},
+								{
+									"key": "brand_name",
+									"value": "nike",
+									"type": "default"
+								},
+								{
+									"key": "material",
+									"value": "none",
+									"type": "default"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/D:/Images/1ef04ab8540004194ba90daaaf1d19e7.jpg",
+									"disabled": true
+								},
+								{
+									"key": "sizes[]",
+									"value": "large",
+									"type": "default"
+								},
+								{
+									"key": "sizes[]",
+									"value": "small",
+									"type": "default"
+								},
+								{
+									"key": "sizes[]",
+									"value": "43",
+									"type": "default"
+								},
+								{
+									"key": "colors[]",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "colors[]",
+									"value": "4",
+									"type": "default"
+								},
+								{
+									"key": "colors[]",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}products/1",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza my list of products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmNhZmI4N2JhZmQ2NmM0YWRmODg1YzViYzYzOWIwODZiMDk5YmNjNjc3NTJlOTMzNTY5N2Y1MTIyMDUxOTIxZGJmYzQ5ZTc0MjJmMjg3NjAiLCJpYXQiOjE2ODI2NjQ3ODAuNTMwMTUsIm5iZiI6MTY4MjY2NDc4MC41MzAxNTIsImV4cCI6MTcxNDI4NzE4MC41MjQ2NTQsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.Emiu8YsXIhQQgmi_OvpUFlgbuewWpqfeS0sdWlNcTjKTlW0Kf8t1bCW2A4sK9ucInBAkRdZufHgbVtL1EbBgyj_wBRu65UqKLu_askwqgz2g35A_0WilDRJTw-bfFXuORkTqX2GWYUBqaGbvmKl3WO9KKW6dVpB5BL4lJkD-4HILsw4VFMosBQMafF912LCsbPlbIbkWmaqrE6lPxQq5Q_AHTyJZXJZRcL66bikA2hNRiUZl7GCFha-go-TOMJsxzp5hdelCMO80Z-V6bRpW8tfIsBtQ2ebG8Yo2-xGZ1jDZHQAGqRKk2dD43mb8Ah8ZpgQRJ-rTCdrYNbZI8IQBFigEei-v5H9KAikMBaICce8efuxjgpaAOcZVoJtiW2i-NSWcf5OK1Xw9oWdfM2xRtYkRgjkOpvLybfxwRtY2G_vXnVcwUQcOJm5kakdpJBIolEwexnV_3LVDKKlWp0Ww-i5igXPUp8oj0wngcZMgAz3cOLMD-dZn0nUp6vHU_xRQh66a4RsUONzsS1orpgsajVQ_eovM9VLyXgiCxei_28o9tCSVFIFxAUy28Hpdy5VCNG7yJojO2ZLLksAK1_ITc-HLEIk2pRkuLEm92fyGGjIkP6Wg3QrEJBDsxHnYz8vDbwNz6aytGuCO9KPircONu4Om1NRcrZL22FhqdH45j8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}user/products",
+							"host": [
+								"{{baseURL}}user"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza search product by name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}products/search",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza change product status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGJlNDUyMjhiODI2ZGNkMDQ3OGE4ODdlN2QzZTE5ODE0ZmM1MmQxNWRjNmEzZTczN2E1Yjg4MzIzOWNiNzQ0MzNkN2ZkMTQ4NjgwZjE1YmEiLCJpYXQiOjE2ODI2NjQ3MTguOTc5MDk4LCJuYmYiOjE2ODI2NjQ3MTguOTc5MSwiZXhwIjoxNzE0Mjg3MTE4Ljk2OTA4Niwic3ViIjoiMSIsInNjb3BlcyI6W119.JZDBAauFJNt-7KLhayJ9fPOCQsEHwkZw5VemorvUQB39gEqxoYBkItp7tJTqmUWFCjHemy1P-oCYZzGrF2jXQLWkpjnwSl1MToqEFeQn4jpl9bweamFypAWpjluyDOiI-8Xbp5YxsenBLqmvDIVx2dvoUWmTtyDVdKREJ6tb7FfeWjzhCIaxtRZFvJ6tQy3EWrmLZ-R_Dovp1gsGvTtUVDQNsO8JlbeIJVIDtU3vm6geVcRU-_rp1n3Eja_5oJ7Qz_typxxTTSBvMLcRv_v5UBqqY17IqGC51OMcumWJj86Z0jJceWHuda7REauagZwznRclE2CC-Q6fvyEkDdNC0PBYBFyISGGxp-4pFj45Bq7Rspijdf7Ffma5J1DT4OYPeuJYhWLSx4cW48WzGteTPvWMQGLPP_jJLc4F4ZQqlFr4ZMi1riXDVuUlYuQAP84A27X2IOAcbgq5kyX7NI-JxRdwTntq1jRmLyJhnfEVXEkyveHhYU3YglbpSESzxRlarUuRP_ZQqskZmY6URR3oguIwnlYpUXOjaWpSA0Jin9fsrX1RJqV00nQ9qRK1MrV052t5a7_vL6t6nXa0E0K-JrgBXWgM3H4qFYL4SxwSl5kEHYfpcHUCDoxZClc6RxnpkA3k-QE0cprcroCJY9z2UMxUt1pzvYMAHG2Jv3aEEzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "in_stock",
+									"value": "0",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}products/status/3",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"status",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza seller list of products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}products/seller/2",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"seller",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hamza product filter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "gender",
+									"value": "men",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "bags",
+									"type": "default"
+								},
+								{
+									"key": "color_id",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}products/filters/show",
+							"host": [
+								"{{baseURL}}products"
+							],
+							"path": [
+								"filters",
+								"show"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://127.0.0.1:8000/api/"
+		}
+	]
+}
