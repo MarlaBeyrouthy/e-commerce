@@ -154,7 +154,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if (auth()->user()->id !== $product->user_id) {
-            abort(403, 'Unauthorized action.');
+            return response()->json(['massage' => 'forbidden'],403);
         }
         // Define an array of valid categories
         $valid_Categories =
@@ -201,7 +201,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if (auth()->user()->id !== $product->user_id) {
-            abort(403, 'Unauthorized action.');
+             return response()->json(['massage' => 'forbidden'],403);
         }
         $status = $request->validate([
             'in_stock' => 'required|boolean'
@@ -222,7 +222,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if (auth()->user()->id !== $product->user_id) {
-            abort(403, 'Unauthorized action.');
+             return response()->json(['massage' => 'forbidden'],403);
         }
 
         Storage::delete($product->photo);
