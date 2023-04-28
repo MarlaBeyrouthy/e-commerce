@@ -15,14 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->boolean('verified')->default(false);
-            $table->string('verification_code',6)->nullable()->unique();
+           // $table->boolean('verified')->default(false);
+          //  $table->string('verification_code',6)->nullable()->unique();
            // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('address');
             $table->string('phone');
+            $table->string('contact');
+
             $table->string('photo')->nullable();
             $table->string('photo_profile')->nullable();
+            $table->text('bio')->nullable();
            // $table->rememberToken();
             $table->timestamps();
            // $table->timestamp('created_at')->nullable();

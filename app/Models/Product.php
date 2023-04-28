@@ -12,17 +12,17 @@ class Product extends Model
 
     protected $table = 'products';
     protected $fillable = [
-        'product',
+        'name',
         'description',
-        'brand_name',
         'price',
-        'photo_product',
+        'category',
+        'gender',
+        'brand_name',
         'user_id',
-        'seller_id',
-        'category_id',
-        'color_id',
-        'size_id',
         'material',
+        'photo',
+        'in_stock',
+        'sizes'
 
     ];
 
@@ -31,10 +31,10 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function subcategory()
+  /*  public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);
-    }
+    }*/
 
     public function cartItems()
     {
@@ -50,4 +50,22 @@ class Product extends Model
     {
         return $this->belongsToMany(Size::class, 'product_sizes');
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function wishlistedBy()
+    {
+        return $this->belongsToMany(User::class, 'wishlists');
+    }
+
+    public function calculateAverageRating()
+    {
+        $averageRating = $this->reviews()->avg('rating');
+        $this->update(['average_rating' => $averageRating]);
+        return $averageRating;
+    }
+
+
 }

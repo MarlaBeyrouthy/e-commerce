@@ -13,16 +13,33 @@ class ColorsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('colors')->insert([
+   /*     DB::table('colors')->insert([
             ['color' => 'red'],
             ['color' => 'blue'],
             ['color' => 'green'],
             ['color' => 'black'],
             ['color' => 'white'],
-            ['color' => 'pink'],
+            ['color' => 'pink'],*/
+
+
+         $colors = [
+             'red',
+            'green',
+             'blue',
+             'black',
+             'white',
+             'gray',
+             'brown',
+             'pink',
+             'multi-color',
+             'other'
+         ];
+
+        foreach ($colors as $color) {
+            DB::table('colors')->insert(['color' => $color]);
+        }
 
 
 
-        ]);
     }
 }

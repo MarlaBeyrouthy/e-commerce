@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'address',
         'phone',
+        'contact',
         'photo',
         'photo_profile',
     ];
@@ -61,4 +62,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+    public function cartItems()
+    {
+        return $this->hasMany(Cart_Item::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany(Product::class, 'wishlists');
+    }
+
+    public function addFavorite(User $user)
+    {
+        $this->favorites()->attach($user->id);
+    }
+
+    public function removeFavorite(User $user)
+    {
+        $this->favorites()->detach($user->id);
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorite_user_id')->withTimestamps();
+    }
+
+
+
 }

@@ -8,13 +8,14 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Session;
 
 
 class AccountConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $code;
+
 
 
     /**
@@ -22,9 +23,10 @@ class AccountConfirmationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($code)
+    public function __construct()
     {
-        $this->code = $code;
+
+
 
     }
 
@@ -35,7 +37,14 @@ class AccountConfirmationMail extends Mailable
      */
     public function build()
     {
-       return $this->view('verify',['code'=>$this->code]);
+      /* return $this->view('verify',[
+           'code'=>$this->code,
+           'user'=>$this->user,
+       ]);*/
+
+        $code = session()->get('verification_code');
+        return $this->subject('Verification Code')->view('verify', compact('code'));
+
     }
 }
 

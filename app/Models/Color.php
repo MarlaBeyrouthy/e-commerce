@@ -16,9 +16,19 @@ class Color extends Model
     public $timestamps = false;
 
 
-    public function products()
+   /* public function products()
     {
         return $this->belongsToMany(Product::class, 'product__colors');
+    }*/
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->belongsToMany(Cart_Item::class);
     }
 
 }

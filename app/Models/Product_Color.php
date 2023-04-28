@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product_Color extends Model
 {
     use HasFactory;
-    protected $table = 'product_colors';
+    protected $table = 'product__colors';
     protected $fillable = [
         'product_Id',
         'color_Id',
@@ -17,7 +17,7 @@ class Product_Color extends Model
     public $timestamps = false;
 
 
-    public function product()
+   /* public function product()
     {
         return $this->belongsTo(Product::class);
     }
@@ -25,5 +25,5 @@ class Product_Color extends Model
     public function color()
     {
         return $this->belongsTo(Color::class);
-    }
+    }*/
 }

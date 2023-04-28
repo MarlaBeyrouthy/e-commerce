@@ -41,7 +41,7 @@ class PasswordResetController extends Controller
 
         // Send the verification code to the user via email or any other preferred method
 
-        Mail::to($request->email)->send(new ResetPasswordMail($code));
+        Mail::to($request->email)->send(new ResetPasswordMail($code,$user));
         return response()->json(['message' => 'Verification code sent to your email']);
     }
 

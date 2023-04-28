@@ -14,21 +14,17 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('product')->nullable();
+            $table->string('name');
             $table->text('description')->nullable();
+            $table->decimal('price',8,2);
+            $table->string('category');
+            $table->string('gender');
             $table->string('brand_name')->nullable();
-            $table->decimal('price',8,2)->nullable();
-            $table->string('photo_product')->nullable();
+            $table->foreignId('user_id');
             $table->string('material')->nullable();
-            $table->string('size')->nullable();
-
-
-
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('seller_id')->nullable();
-            $table->unsignedBigInteger('subcategory_id')->nullable();
-            $table->unsignedBigInteger('color_id')->nullable();
-           // $table->unsignedBigInteger('size_id')->nullable();
+            $table->string('photo')->nullable();
+            $table->json('sizes');
+            $table->boolean('in_stock')->default(true);
             $table->timestamps();
         });
     }
@@ -39,15 +35,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
-
-
-        /*Schema::dropIfExists('product__colors');
-        Schema::dropIfExists('products');
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Schema::dropIfExists('colors');
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');*/
-
-
     }
 };
