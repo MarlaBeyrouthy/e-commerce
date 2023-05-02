@@ -9,39 +9,28 @@ class Cart_Item extends Model
 {
     use HasFactory;
 
-    protected $table = 'cart__items';
     protected $fillable = [
+        'name',
+        'cart_id',
         'product_id',
         'quantity',
-        'price',
+        'price'
     ];
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
 
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-  /*  public function carts()
+    public function color()
     {
-        return $this->hasMany(Cart::class);
-    }*/
-
-    public function sizes()
-    {
-        return $this->belongsToMany(Size::class);
+        return $this->belongsTo(Color::class);
     }
 
-    public function colors()
-    {
-        return $this->belongsToMany(Color::class);
-    }
 
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
