@@ -12,8 +12,6 @@ class Cart extends Model
     protected $table = 'carts';
     protected $fillable = [
         'user_id',
-        'order_id',
-        'cart_item_id',
         'Total_price',
     ];
 
@@ -21,15 +19,10 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
-/*
-    public function cartItem()
-    {
-        return $this->belongsTo(Cart_Item::class);
-    }*/
 
-    public function cartItem()
+    public function cartItems()
     {
-        return $this->belongsTo(Cart_Item::class);
+        return $this->hasMany(CartItem::class);
     }
 
     public function order()
