@@ -73,7 +73,7 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::post('/cart', [CartItemController::class, 'AddToCart']);
     Route::get('/cart', [CartItemController::class, 'ShowCart']);
     Route::get('/cart/{index}', [CartItemController::class, 'ShowCartItem']);
-    Route::post('/cart/{index}', [CartItemController::class, 'ChangeQuantity']);
+    Route::post('/cart/{index}', [CartItemController::class, 'ChangeDetails']);
     Route::delete('/cart/{index}', [CartItemController::class, 'DeleteCartItem']);
 
 
