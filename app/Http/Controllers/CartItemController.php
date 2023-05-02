@@ -102,7 +102,7 @@ class CartItemController extends Controller
             'cart_item' => $cart[$index],]);
     }
 
-    public function ChangeQuantity(Request $request, $index)
+    public function ChangeDetails(Request $request, $index)
 {
     $validatedData = $request->validate([
         'color_id' => 'required|exists:colors,id',
