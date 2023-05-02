@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\CartItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,15 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::post('/products/status/{id}', [ProductController::class, 'change_status']);
     Route::delete('/products/{id}', [ProductController::class, 'delete']);
     Route::get('/user/products', [ProductController::class, 'my_products']);
+    
+    
+    //cart api
+    Route::post('/cart', [CartItemController::class, 'AddToCart']);
+    Route::get('/cart', [CartItemController::class, 'ShowCart']);
+    Route::get('/cart/{index}', [CartItemController::class, 'ShowCartItem']);
+    Route::post('/cart/{index}', [CartItemController::class, 'ChangeQuantity']);
+    Route::delete('/cart/{index}', [CartItemController::class, 'DeleteCartItem']);
+
 
 
 
