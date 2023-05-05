@@ -19,7 +19,7 @@ class ProductController extends Controller
         $valid_Categories =
             [ 'shoes', 'pants', 'shorts', 'watches',
                 'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
 
         // Validate the request data
         $validatedData = $request->validate([
@@ -160,7 +160,7 @@ class ProductController extends Controller
         $valid_Categories =
             [ 'shoes', 'pants', 'shorts', 'watches',
                 'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
 
         // Validate the request data
         $validatedData = $request->validate([
@@ -235,7 +235,7 @@ class ProductController extends Controller
 
     public function filters(Request $request)
     {
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
         $valid_Categories =
             ['shoes', 'pants', 'shorts', 'watches',
                 'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
