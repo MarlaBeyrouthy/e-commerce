@@ -57,7 +57,7 @@ class CartItemController extends Controller
 
 
     // Retrieve the cart from the session and add the new item
-    $cart = Session::get('cart', []);
+    $cart = Session::get('cart'.auth()->id(), []);
     $index = count($cart);
     $cartItem = [
         'index' => $index,
@@ -69,7 +69,7 @@ class CartItemController extends Controller
         'price' => $price
     ];
     $cart[$index] = $cartItem;
-    Session::put('cart', $cart);
+    Session::put('cart'.auth()->id(), $cart);
 
     // Return a response indicating success
     return response()->json([
@@ -80,7 +80,7 @@ class CartItemController extends Controller
     public function ShowCart()
     {
         // Get the cart from the session
-        $cart = Session::get('cart', []);
+        $cart = Session::get('cart'.auth()->id(), []);
 
         // Return a response with the cart items
         return response()->json([
@@ -90,7 +90,7 @@ class CartItemController extends Controller
     public function ShowCartItem($index)
     {
         // Get the cart from the session
-        $cart = Session::get('cart', []);
+        $cart = Session::get('cart'.auth()->id(), []);
 
         if (!isset($cart[$index])) {
             return response()->json([
@@ -111,7 +111,7 @@ class CartItemController extends Controller
     ]);
 
     // Get the cart from the session
-    $cart = Session::get('cart', []);
+    $cart = Session::get('cart'.auth()->id(), []);
 
     // Check if the index is valid
     if (!isset($cart[$index])) {
@@ -142,7 +142,7 @@ class CartItemController extends Controller
     $cart[$index]['price'] = $price;
 
     // Save the updated cart to the session
-    Session::put('cart', $cart);
+    Session::put('cart'.auth()->id(), $cart);
 
     // Return a response indicating success
     return response()->json([
@@ -154,7 +154,7 @@ class CartItemController extends Controller
 public function DeleteCartItem($index)
 {
     // Get the cart from the session
-    $cart = Session::get('cart', []);
+    $cart = Session::get('cart'.auth()->id(), []);
 
     // Check if the index is valid
     if (!isset($cart[$index])) {
@@ -167,7 +167,7 @@ public function DeleteCartItem($index)
     unset($cart[$index]);
 
     // Save the updated cart to the session
-    Session::put('cart', $cart);
+    Session::put('cart'.auth()->id(), $cart);
 
     // Return a response indicating success
     return response()->json([
@@ -176,9 +176,5 @@ public function DeleteCartItem($index)
 
     //
 }
-
-
-
-
 
 
