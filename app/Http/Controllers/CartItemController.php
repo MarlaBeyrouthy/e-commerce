@@ -16,7 +16,7 @@ class CartItemController extends Controller
             'product_id' => 'required|exists:products,id',
             'color_id' => 'required|exists:colors,id',
             'size'=> 'required|string',
-            'quantity' =>'required|integer'
+            'quantity' => 'required|integer|min:1',
         ]);
         $product = Product::find($validatedData['product_id']);
         $price = $product->price * $validatedData['quantity'];
@@ -24,7 +24,7 @@ class CartItemController extends Controller
 
         if (!$product->colors()->where('color_id', $validatedData['color_id'])->exists()) {
             return response()->json([
-                'message' => 'incorrect color']);
+                'message' => 'incorrect color'],422);
         }
 
         $product_sizes = json_decode($product->sizes, true);
@@ -32,29 +32,17 @@ class CartItemController extends Controller
         //searching if the size we requested if it is in the product array
         if (!in_array($validatedData['size'], $product_sizes)) {
             return response()->json([
-                'message' => 'incorrect size']);
+                'message' => 'incorrect size'],422);
         }
-        /*
-        // Check if the cart exists
-        if (!$request->has('cart_id')) {
-            // Create a new cart
-            $cart = new Cart();
-            $cart->user_id = auth()->id();
-            $cart->save();
+
+        if ($product->in_stock==0) {
+            return response()->json([
+                'message' => 'the product is out of stock'],422);
         }
-        $cart = Cart::find($request->input('cart_id'));
-
-        $cartItem = new Cart_Item();
-        //$cartItem->cart_id = $cart->id;
-        $cartItem->product_id = $validatedData['product_id'];
-        $cartItem->color_id=$validatedData['color_id'];
-        $cartItem->size = $validatedData['size'];
-        $cartItem->price = $price;
-        $cartItem->quantity = $validatedData['quantity'];
-        //$cartItem->save();
-        */
-
-
+        if ($product->quantity<$validatedData['quantity']) {
+            return response()->json([
+                'message' => 'sorry you cannot order that much'],422);
+        }
 
     // Retrieve the cart from the session and add the new item
     $cart = Session::get('cart'.auth()->id(), []);
@@ -107,7 +95,7 @@ class CartItemController extends Controller
     $validatedData = $request->validate([
         'color_id' => 'required|exists:colors,id',
         'size'=> 'required|string',
-        'quantity' =>'required|integer'
+        'quantity' => 'required|integer|min:1',
     ]);
 
     // Get the cart from the session
@@ -126,14 +114,19 @@ class CartItemController extends Controller
 
     if (!$product->colors()->where('color_id', $validatedData['color_id'])->exists()) {
         return response()->json([
-            'message' => 'incorrect color']);
+            'message' => 'incorrect color'],422);
     }
 
     $product_sizes = json_decode($product->sizes, true);
     //searching if the size we requested if it is in the product array
     if (!in_array($validatedData['size'], $product_sizes)) {
         return response()->json([
-            'message' => 'incorrect size']);
+            'message' => 'incorrect size'],422);
+    }
+
+    if ($product->quantity<$validatedData['quantity']) {
+        return response()->json([
+            'message' => 'sorry you cannot order that much'],422);
     }
     // Update the cart item with the new quantity
     $cart[$index]['color_id'] = $validatedData['color_id'];
@@ -176,5 +169,3 @@ public function DeleteCartItem($index)
 
     //
 }
-
-
