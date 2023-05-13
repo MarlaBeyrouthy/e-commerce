@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     /*
-    private const VALID_GENDERS = ['men', 'women', 'kids'];
+    private const VALID_GENDERS = ['men', 'women', 'boys','girls'];
     private const VALID_CATEGORIES = ['shoes', 'pants', 'shorts', 'watches', 'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
      */
 
@@ -22,7 +22,7 @@ class ProductController extends Controller
         $valid_Categories =
         [ 'shoes', 'pants', 'shorts', 'watches',
          'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
 
         // Validate the request data
         $validatedData = $request->validate([
@@ -170,7 +170,7 @@ class ProductController extends Controller
         $valid_Categories =
         [ 'shoes', 'pants', 'shorts', 'watches',
          'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
 
         // Validate the request data
         $validatedData = $request->validate([
@@ -279,7 +279,7 @@ class ProductController extends Controller
 
     public function filters(Request $request)
     {
-        $valid_Genders = ['men', 'women', 'kids'];
+        $valid_Genders = ['men', 'women', 'boys','girls'];
         $valid_Categories =
             ['shoes', 'pants', 'shorts', 'watches',
              'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
