@@ -323,20 +323,4 @@ class ProductController extends Controller
         return  $products;
     }
 
-/*
-    public function example_for_marla(request $request,$id)
-    {
-        $product = Product::find($id);
-        $size = $request->input('size');
-        $product_sizes = json_decode($product->sizes, true);
-
-        //searching if the size we requested if it is in the product array
-        if (in_array($size, $product_sizes)) {
-        return "Found ";
-        }
-        else {
-        return "not Found ";
-        }
-    } */
-
 }
