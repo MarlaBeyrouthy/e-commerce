@@ -24,8 +24,10 @@ return new class extends Migration
             $table->string('material')->nullable();
             $table->string('photo')->nullable();
             $table->json('sizes');
+            $table->integer('quantity');
             $table->boolean('in_stock')->default(true);
             $table->timestamps();
+
         });
     }
 
@@ -35,5 +37,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
+        /*Schema::dropIfExists('product__colors');
+        Schema::dropIfExists('products');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Schema::dropIfExists('colors');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');*/
     }
 };
