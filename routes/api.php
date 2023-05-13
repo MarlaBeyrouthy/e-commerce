@@ -49,10 +49,8 @@ Route::post('password/reset', [PasswordResetController::class, 'resetPasswordWit
 //public routes no need to auth
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
-
-Route::post('/products/search', [ProductController::class, 'search']);
-Route::post('/products/filters/show', [ProductController::class, 'filters']);
-Route::get('/products/seller/{id}', [ProductController::class, 'user_products']);
+Route::post('/search', [ProductController::class, 'search']);
+Route::post('/products/filters/show', [ProductController::class, 'index_with_filter']);
 
 Route::group(["middleware"=>["auth:api"]],function (){
     Route::get("myProfile",[UserController::class,"myProfile"]);
@@ -64,19 +62,17 @@ Route::group(["middleware"=>["auth:api"]],function (){
 
     Route::post('/products', [ProductController::class, 'create']);
     Route::post('/products/{id}', [ProductController::class, 'update']);
-    Route::post('/products/status/{id}', [ProductController::class, 'change_status']);
+    Route::post('/products/change/status', [ProductController::class, 'change_status']);
+    Route::post('/products/change/prices', [ProductController::class, 'change_prices']);
     Route::delete('/products/{id}', [ProductController::class, 'delete']);
-    Route::get('/user/products', [ProductController::class, 'my_products']);
-    
-    
-    //cart api
+    Route::post('/user/products', [ProductController::class, 'my_products']);
+
+
     Route::post('/cart', [CartItemController::class, 'AddToCart']);
     Route::get('/cart', [CartItemController::class, 'ShowCart']);
     Route::get('/cart/{index}', [CartItemController::class, 'ShowCartItem']);
     Route::post('/cart/{index}', [CartItemController::class, 'ChangeDetails']);
     Route::delete('/cart/{index}', [CartItemController::class, 'DeleteCartItem']);
-
-
 
 
     Route::post('products/{product}/reviews', [ReviewController::class,"setReview"]);
