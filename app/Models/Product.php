@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
-{
+class Product extends Model{
     use HasFactory;
-
-
-    protected $table = 'products';
     protected $fillable = [
         'name',
         'description',
@@ -21,6 +17,7 @@ class Product extends Model
         'user_id',
         'material',
         'photo',
+        'quantity',
         'in_stock',
         'sizes'
 
@@ -31,41 +28,20 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-  /*  public function subcategory()
-    {
-        return $this->belongsTo(Subcategory::class);
-    }*/
-
-    public function cartItems()
-    {
-        return $this->hasMany(Cart_Item::class);
-    }
-
     public function colors()
     {
-        return $this->belongsToMany(Color::class, 'product__colors');
+        return $this->belongsToMany(Color::class, 'product_color', 'product_id', 'color_id');
     }
-
+/*
     public function sizes()
     {
-        return $this->belongsToMany(Size::class, 'product_sizes');
+        return $this->hasMany(Size::class);
     }
-    public function reviews()
+    public function colors()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Color::class);
     }
-
-    public function wishlistedBy()
-    {
-        return $this->belongsToMany(User::class, 'wishlists');
-    }
-
-    public function calculateAverageRating()
-    {
-        $averageRating = $this->reviews()->avg('rating');
-        $this->update(['average_rating' => $averageRating]);
-        return $averageRating;
-    }
+ */
 
 
 }
