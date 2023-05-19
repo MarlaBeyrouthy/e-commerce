@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 
-
 class PasswordResetController extends Controller
 {
     public function sendResetCode(Request $request)
@@ -84,6 +83,5 @@ class PasswordResetController extends Controller
 
         return response()->json(['message' => 'Password reset successfully']);
     }
-
 
 }

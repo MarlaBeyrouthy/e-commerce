@@ -14,6 +14,7 @@ class Order extends Model
         'cart_id',
         'user_id',
         'shipping_address',
+        'Total_price',
         'order_date',
     ];
 
@@ -21,11 +22,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function cart()
+    public function cartItems()
     {
-        return $this->hasOne(Cart::class);
-    }
+        return $this->hasMany(CartItem::class);
 
+    }
 
 }

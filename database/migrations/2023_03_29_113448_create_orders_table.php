@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cart_id');
+           // $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('user_id');
             $table->string('shipping_address');
-            $table->time('order_date');
+            $table->decimal('Total_price',8,2)->default(0);
+            $table->timestamp('order_date')->default(now());
             $table->timestamps();
         });
     }

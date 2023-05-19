@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model{
+class Product extends Model
+{
     use HasFactory;
     protected $fillable = [
         'name',
@@ -28,20 +29,34 @@ class Product extends Model{
         return $this->belongsTo(User::class);
     }
 
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
     public function colors()
     {
-        return $this->belongsToMany(Color::class, 'product_color', 'product_id', 'color_id');
+        return $this->belongsToMany(Color::class, 'product__colors');
     }
-/*
-    public function sizes()
+
+
+    public function reviews()
     {
-        return $this->hasMany(Size::class);
+        return $this->hasMany(Review::class);
     }
-    public function colors()
+
+    public function wishlistedBy()
     {
-        return $this->hasMany(Color::class);
+        return $this->belongsToMany(User::class, 'wishlists');
     }
- */
+
+    public function calculateAverageRating()
+    {
+        $averageRating = $this->reviews()->avg('rating');
+        $this->update(['average_rating' => $averageRating]);
+        return $averageRating;
+    }
 
 
 }

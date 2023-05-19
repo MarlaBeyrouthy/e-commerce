@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-
-
     public function setReview(Product $product, Request $request) {
 
         $request->validate([
@@ -66,8 +64,6 @@ class ReviewController extends Controller
         return response()->json(['message' => 'Rating saved successfully.']);
     }
 
-
-
     public function showProductReviews($product_id)
     {
         // Retrieve the product by its ID
@@ -79,6 +75,5 @@ class ReviewController extends Controller
         // Return the reviews data as a JSON response
         return response()->json($reviews);
     }
-
 
 }

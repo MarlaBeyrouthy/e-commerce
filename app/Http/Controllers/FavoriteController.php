@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-
     public function addFavorite($favoriteUserId)
     {
         $user = auth()->user();
@@ -37,11 +36,5 @@ class FavoriteController extends Controller
         return response()->json(['favorite' => $favorites ]);
 
     }
-
-
-
-
-
-
 
 }

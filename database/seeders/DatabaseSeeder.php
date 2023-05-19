@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ColorsTableSeeder::class,
             UserSeeder::class,
+            PermissionSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

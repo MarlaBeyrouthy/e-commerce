@@ -26,6 +26,7 @@ return new class extends Migration
             $table->json('sizes');
             $table->integer('quantity');
             $table->boolean('in_stock')->default(true);
+            $table->decimal('average_rating', 3, 2)->nullable();
             $table->timestamps();
 
         });

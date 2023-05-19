@@ -4,17 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Color;
-use App\Models\Size;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /*
-    private const VALID_GENDERS = ['men', 'women', 'boys','girls'];
-    private const VALID_CATEGORIES = ['shoes', 'pants', 'shorts', 'watches', 'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
-     */
 
     public function create(Request $request)
     {
@@ -60,23 +55,22 @@ class ProductController extends Controller
 
         $product->save();
         $product->colors()->sync($validatedData['colors']);
-/*
-        foreach ($validatedData['sizes'] as $sizeName) {
-            $size = new Size;
-            $size->size = $sizeName;
-            $product->sizes()->save($size);
-        }
-        foreach ($validatedData['colors'] as $colorName) {
-            $color = new Color;
-            $color->color = $colorName;
-            $product->colors()->save($color);
-        }
- */
+        /*
+                foreach ($validatedData['sizes'] as $sizeName) {
+                    $size = new Size;
+                    $size->size = $sizeName;
+                    $product->sizes()->save($size);
+                }
+                foreach ($validatedData['colors'] as $colorName) {
+                    $color = new Color;
+                    $color->color = $colorName;
+                    $product->colors()->save($color);
+                }
+         */
         $product->sizes = json_decode($product->sizes, true);
         // Return a response indicating success
         return response()->json(['message' => 'Product created successfully', 'product' => $product], 201);
     }
-
 
     public function show($id)
     {
@@ -97,7 +91,6 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-
     public function search(Request $request)
     {
 
@@ -110,8 +103,6 @@ class ProductController extends Controller
     }
         return Product::where('name','like','%'.$name.'%')->get();
     }
-
-
 
     public function index()
     {
@@ -127,28 +118,12 @@ class ProductController extends Controller
     return response()->json(['products' => $products]);
     }
 
-
     public function index_with_filter(Request $request)
     {
         $products =$this->filters($request);
         return response()->json(['products' => $products]);
     }
 
-/*
-
-    public function user_products(Request $request,$id)
-    {
-        $request->request->set('user_id', $id);
-        $products =$this->filters($request);
-    //don't worry if you see an errors because it's normal and it's working
-    foreach ($products as $product) {
-        $product = $product->makeHidden([ 'user_id','created_at','updated_at']);
-    }
-    return response()->json(['products' => $products]);
-    }
-
-
- */
     public function my_products(Request $request)
     {
         $request->request->set('user_id', auth()->id());
@@ -156,8 +131,6 @@ class ProductController extends Controller
 
     return response()->json(['products' => $products]);
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -214,8 +187,6 @@ class ProductController extends Controller
     return response()->json(['message' => 'Product updated successfully', 'product' => $product]);
     }
 
-
-
     public function change_status(Request $request)
     {
         $validatedData = $request->validate([
@@ -234,8 +205,6 @@ class ProductController extends Controller
         }
     return response()->json(['message' => 'Product status updated successfully']);
     }
-
-
 
     public function change_prices(Request $request)
     {
@@ -256,11 +225,6 @@ class ProductController extends Controller
     return response()->json(['message' => 'Products prices updated successfully']);
     }
 
-
-
-
-
-
     public function delete($id)
     {
     $product = Product::findOrFail($id);
@@ -274,8 +238,6 @@ class ProductController extends Controller
 
     return response()->json(['message' => 'Product deleted successfully']);
     }
-
-
 
     public function filters(Request $request)
     {

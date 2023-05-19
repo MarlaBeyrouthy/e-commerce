@@ -58,13 +58,14 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function carts()
+    public function permission()
     {
-        return $this->hasMany(Cart::class);
+        return $this->belongsTo(Permission::class);
     }
+
     public function cartItems()
     {
-        return $this->hasMany(Cart_Item::class);
+        return $this->hasMany(CartItem::class);
     }
 
     public function reviews()

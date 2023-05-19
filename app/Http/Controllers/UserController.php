@@ -126,7 +126,7 @@ class UserController extends Controller
     }
 
 
-public function sendConfirmationCode(Request $request)
+    public function sendConfirmationCode(Request $request)
     {
         //validation
         $request->validate([
@@ -302,13 +302,13 @@ public function sendConfirmationCode(Request $request)
             ]);
         }
 
-        $user = auth()->user();
+       /* $user = auth()->user();
         if (!$user->verified) {
             return response()->json([
                 "status" => false,
                 "message" => "User not verified"
             ]);
-        }
+        }*/
 
         //token
         $token=auth()->user()->createToken("auth_token")->accessToken;
@@ -320,7 +320,6 @@ public function sendConfirmationCode(Request $request)
         ]);
 
     }
-
 
     public function myProfile()
     {
@@ -442,9 +441,6 @@ public function sendConfirmationCode(Request $request)
         ],200);
 
     }
-
-
-
 
 
 }
