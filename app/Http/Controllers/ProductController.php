@@ -48,7 +48,7 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $filename = time() . '.' . $request->photo->getClientOriginalExtension();
         $request->photo->storeAs('public/product_photos', $filename);
-        $product->photo = 'public/product_photos/'.$filename;
+        $product->photo = '/storage/product_photos/'.$filename;
 
         $sizes = json_encode($validatedData['sizes']);
         $product->sizes = $sizes;
@@ -170,7 +170,7 @@ class ProductController extends Controller
         Storage::delete($product->photo);
         $filename = time() . '.' . $request->photo->getClientOriginalExtension();
         $request->photo->storeAs('public/product_photos', $filename);
-        $validatedData['photo'] = 'public/product_photos/'.$filename;
+        $validatedData['photo'] = '/storage/product_photos/'.$filename;
     }
 
     if($request->has('quantity')){
