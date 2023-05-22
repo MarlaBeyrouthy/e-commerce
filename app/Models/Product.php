@@ -37,7 +37,7 @@ class Product extends Model
 
     public function colors()
     {
-        return $this->belongsToMany(Color::class, 'product__colors');
+        return $this->belongsToMany(Color::class, 'product_color');
     }
 
 
