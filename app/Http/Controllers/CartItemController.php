@@ -54,6 +54,7 @@ class CartItemController extends Controller
             'quantity' => $validatedData['quantity'],
             'color_id' => $validatedData['color_id'],
             'size' => $validatedData['size'],
+            'photo' => $product->photo,
             'price' => $price
         ];
         $cart[$index] = $cartItem;
@@ -68,11 +69,15 @@ class CartItemController extends Controller
     public function ShowCart()
     {
         // Get the cart from the session
+        $total=0;
         $cart = Session::get('cart'.auth()->id(), []);
-
+        foreach ($cart as $cartItem) {
+            $total+=$cartItem['price'];
+        }
         // Return a response with the cart items
         return response()->json([
-            'cart_items' => $cart,]);
+            'cart_items' => $cart,
+            'total_price' => $total,]);
     }
 
     public function ShowCartItem($index)
