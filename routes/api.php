@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,10 @@ Route::post('/products/filters/show', [ProductController::class, 'filters']);
 //review api
 Route::get('products/{product_id}/reviews', [ReviewController::class, 'showProductReviews']);
 
+//Noore test photo api
+Route::get('/photos', [ProductController::class, 'showphoto']);
+Route::post('/photos', [ProductController::class, 'putphoto']);
+
 
 Route::group(["middleware"=>["auth:api"]],function (){
     //User api
@@ -95,5 +101,31 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::get('orders/user/{user}', [OrderController::class,'showAllOrder']);
 
 
+//dashboard api
+    Route::group(['middleware' => 'Dashboard'], function () {
+        Route::get('/dashboard/reports', [DashboardController::class, 'showReports']);
+        Route::get('/dashboard/users/{userId}/reports', [DashboardController::class, 'getUserReports']);
+        Route::post('/dashboard/reports/check', [DashboardController::class, 'checkReports']);
+        Route::delete('/dashboard/products/{id}', [DashboardController::class, 'deleteProduct']);
+        Route::delete('/dashboard/users/{id}', [DashboardController::class, 'deleteUser']);
+        Route::put('/dashboard/users/{id}/ban', [DashboardController::class, 'BanUser']);
+        Route::get('/dashboard/history/orders', [DashboardController::class, 'getOrders']);
+        Route::get('/dashboard/products/search', [DashboardController::class, 'searchProducts']);
+        Route::get('/dashboard/users/search', [DashboardController::class, 'searchUsers']);
+        Route::get('/dashboard/users/{userId}/orders', [DashboardController::class, 'getUserOrders']);
+        Route::get('/dashboard/sellers', [DashboardController::class, 'getSellers']);
+        Route::get('/dashboard/users/{userId}', [DashboardController::class, 'showUser']);
+        Route::get('/dashboard/users', [DashboardController::class, 'indexUsers']);
+        Route::get('/dashboard/products/{productId}', [DashboardController::class, 'showProduct']);
+        Route::get('/dashboard/products', [DashboardController::class, 'indexProducts']);
+        Route::get('/dashboard/orders/{orderId}', [DashboardController::class, 'showOrder']);
+        Route::get('/dashboard/orders', [DashboardController::class, 'indexOrders']);
+        Route::post('/dashboard/products/filter', [DashboardController::class, 'index_with_filter']);
+        });
+
+    //reports api
+    Route::post('/reports', [ReportController::class, 'create_report']);
+    Route::get('/reports', [ReportController::class, 'my_reports']);
 
 });
+
