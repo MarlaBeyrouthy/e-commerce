@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         // Define an array of valid categories
         $valid_Categories =
-        [ 'shoes', 'pants', 'shorts', 'watches',
+        [ 'shoes' , 'shirts' , 'pants', 'shorts', 'watches',
          'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
         $valid_Genders = ['men', 'women', 'boys','girls'];
 
@@ -46,9 +46,13 @@ class ProductController extends Controller
         $product->material = $validatedData['material'];
         // set the user id to the authenticated user's id
         $product->user_id = auth()->id();
-        $filename = time() . '.' . $request->photo->getClientOriginalExtension();
-        $request->photo->storeAs('public/product_photos', $filename);
-        $product->photo = '/storage/product_photos/'.$filename;
+        if(auth()->user()->permission_id!=1){
+            return response()->json(['message' => 'forbidden'],403);
+        }
+        $filename = time(). '.' . $request->photo->getClientOriginalExtension();
+        $request->photo->storeAs('public/products_photos/'.$product->user_id, $filename);
+        $product->photo = 'products_photos/'.$product->user_id.'/'.$filename;
+        //$product->photo = 'public/product_photos'.$filename;
 
         $sizes = json_encode($validatedData['sizes']);
         $product->sizes = $sizes;
@@ -78,6 +82,7 @@ class ProductController extends Controller
         //don't worry if you see an errors because it's normal and it's working
         $product->user_name = $product->user->name;
         $product->sizes = json_decode($product->sizes, true);
+        //$product->url = Storage::url($product->photo);
         $product = $product->makeHidden(['user']);
         $product->colors->makeHidden('pivot');
         /*
@@ -141,7 +146,7 @@ class ProductController extends Controller
     }
         // Define an array of valid categories
         $valid_Categories =
-        [ 'shoes', 'pants', 'shorts', 'watches',
+        [ 'shoes' , 'shirts' , 'pants', 'shorts', 'watches',
          'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
         $valid_Genders = ['men', 'women', 'boys','girls'];
 
@@ -168,9 +173,10 @@ class ProductController extends Controller
 
     if($request->hasFile('photo')){
         Storage::delete($product->photo);
-        $filename = time() . '.' . $request->photo->getClientOriginalExtension();
-        $request->photo->storeAs('public/product_photos', $filename);
-        $validatedData['photo'] = '/storage/product_photos/'.$filename;
+        $filename = time(). '.' . $request->photo->getClientOriginalExtension();
+        $request->photo->storeAs('public/products_photos/'.$product->user_id, $filename);
+        $validatedData['photo'] = 'products_photos/'.$product->user_id.'/'.$filename;
+        //$validatedData['photo'] = 'public/product_photos'.$filename;
     }
 
     if($request->has('quantity')){
@@ -243,7 +249,7 @@ class ProductController extends Controller
     {
         $valid_Genders = ['men', 'women', 'boys','girls'];
         $valid_Categories =
-            ['shoes', 'pants', 'shorts', 'watches',
+            ['shoes' , 'shirts' , 'pants', 'shorts', 'watches',
              'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress'];
 
         // Validate the request data
@@ -284,5 +290,59 @@ class ProductController extends Controller
         }
         return  $products;
     }
+
+
+/////////////////////////////////////////////////////////   for Noore only
+
+public function putphoto(Request $request)
+{
+    $request->validate([
+        'photo' => 'required|image|mimes:jpg',
+    ]);
+
+    $filename = 'noore.jpg';
+    $photo = $request->photo->storeAs('public/test_photos', $filename);
+
+    $url = Storage::url($photo);
+     return response()->json(['photo' => $url]);
+}
+
+public function showphoto()
+{
+    $url = Storage::url('public/test_photos/noore.jpg');
+     return response()->json(['photo' => $url]);
+}
+
+public function showProductPhoto($productId)
+{
+    $product = Product::findOrFail($productId);
+
+    // Check if the product has a photo
+    if (!$product->photo) {
+        abort(404);
+    }
+
+    // Get the full path of the photo
+    $photoPath = storage_path('app/' . $product->photo);
+
+    // Check if the photo file exists
+    if (!file_exists($photoPath)) {
+        abort(404);
+    }
+
+    // Read the photo file
+    $photoData = file_get_contents($photoPath);
+
+    // Get the MIME type of the photo
+    $photoMime = mime_content_type($photoPath);
+
+    // Create a file response with the photo data and MIME type
+    $response = response($photoData, 200, [
+        'Content-Type' => $photoMime,
+        'Content-Disposition' => 'inline; filename="' . basename($photoPath) . '"',
+    ]);
+
+    return $response;
+}
 
 }
