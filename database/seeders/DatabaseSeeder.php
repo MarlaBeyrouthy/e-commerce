@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             ColorsTableSeeder::class,
             UserSeeder::class,
             PermissionSeeder::class,
+            CitiesTableSeeder::class,
+            PlacesTableSeeder::class,
+
         ]);
         // \App\Models\User::factory(10)->create();
 

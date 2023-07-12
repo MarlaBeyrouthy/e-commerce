@@ -93,6 +93,20 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'favorites', 'user_id', 'favorite_user_id')->withTimestamps();
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
+
+
+    public function getProductOwners()
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }

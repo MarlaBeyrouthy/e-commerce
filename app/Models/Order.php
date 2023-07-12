@@ -28,4 +28,15 @@ class Order extends Model
 
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
+
+
 }

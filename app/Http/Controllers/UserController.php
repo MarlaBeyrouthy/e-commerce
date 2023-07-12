@@ -69,8 +69,11 @@ class UserController extends Controller
         $this->validate( $request, [
             'name'     => 'required',
             'phone'    => 'required',
+            'permission_id'=> 'required',
             'password' => 'required|string|min:8|confirmed',
             "address"=>"required",
+            'city_id'  => 'required|exists:cities,id',
+            'place_id' => 'required|exists:places,id',
 
         ] );
 
@@ -93,6 +96,10 @@ class UserController extends Controller
         $user->phone=$request->phone;
         $user->bio=$request->bio;
         $user->contact=$request->contact;
+        $user->city_id = $request->city_id;
+        $user->place_id =$request->place_id;
+        $user->permission_id =$request->permission_id;
+
 
 
         $photo = $request->file('photo');
@@ -126,6 +133,7 @@ class UserController extends Controller
     }
 
 
+
     public function sendConfirmationCode(Request $request)
     {
         //validation
@@ -135,7 +143,8 @@ class UserController extends Controller
             "address"=>"required",
             //"email"=>"required | email | unique :users",
             'email' => 'required|email|unique:users,email,NULL,id,verified,1',
-            "password"=>"required|string|min:8|confirmed"
+            "password"=>"required|string|min:8|confirmed",
+
         ]);
 
         //check if email already exists

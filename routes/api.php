@@ -55,7 +55,7 @@ Route::post('/products/filters/show', [ProductController::class, 'filters']);
 //review api
 Route::get('products/{product_id}/reviews', [ReviewController::class, 'showProductReviews']);
 
-//Noore test photo api
+//Noor test photo api
 Route::get('/photos', [ProductController::class, 'showphoto']);
 Route::post('/photos', [ProductController::class, 'putphoto']);
 
@@ -86,12 +86,12 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::post('products/{product}/reviews', [ReviewController::class,"setReview"]);
 
     //wishlist api
-    Route::post('wishlist/{productId}', [WishlistController::class,'addToWishlist']);
+    Route::get('wishlists/add', [WishlistController::class,'addToWishlist']);
     Route::delete('wishlist/{productId}', [WishlistController::class,'removeFromWishlist']);
     Route::get('wishlist', [WishlistController::class,'getWishlist']);
 
     //favorite api
-    Route::post('favorites/{productId}', [FavoriteController::class,'addFavorite']);
+    Route::get('favorites/add', [FavoriteController::class,'addFavorite']);
     Route::delete('favorites/{productId}', [FavoriteController::class,'removeFavorite']);
     Route::get('favorite', [FavoriteController::class,'getFavoriteUsers']);
 
@@ -100,8 +100,10 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::get('orders/{order}', [OrderController::class,'showOrder']);
     Route::get('orders/user/{user}', [OrderController::class,'showAllOrder']);
 
+    Route::post('/orders/{id}/check', [OrderController::class,'checkOrder']);
 
-//dashboard api
+
+    //dashboard api
     Route::group(['middleware' => 'Dashboard'], function () {
         Route::get('/dashboard/reports', [DashboardController::class, 'showReports']);
         Route::get('/dashboard/users/{userId}/reports', [DashboardController::class, 'getUserReports']);

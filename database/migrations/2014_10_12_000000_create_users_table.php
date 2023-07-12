@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->foreignId('permission_id')->default(1);
             $table->string('password');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('contact');
+            $table->foreignId('place_id')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('contact')->nullable();
             $table->string('photo')->nullable();
             $table->string('photo_profile')->nullable();
             $table->text('bio')->nullable();

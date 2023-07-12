@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function addFavorite($favoriteUserId)
+  /*  public function addFavorite($favoriteUserId)
     {
         $user = auth()->user();
         $favoriteUser = User::find($favoriteUserId);
@@ -17,6 +17,16 @@ class FavoriteController extends Controller
 
         return response()->json(['message' => 'Person added to favorite.']);
 
+    }*/
+
+    public function addFavorite(Request $request)
+    {
+        $favoriteUserId = $request->query('id');
+        $user = auth()->user();
+        $favoriteUser = User::find($favoriteUserId);
+        $user->addFavorite($favoriteUser);
+
+        return response()->json(['message' => 'Person added to favorite.']);
     }
 
     public function removeFavorite($favoriteUserId)
@@ -32,7 +42,7 @@ class FavoriteController extends Controller
     public function getFavoriteUsers()
     {
         $user = auth()->user();
-        $favorites = $user->favorites()->get()->makeHidden(['verification_code', 'verified','email']);
+        $favorites = $user->favorites()->get()->makeHidden(['email']);
         return response()->json(['favorite' => $favorites ]);
 
     }
