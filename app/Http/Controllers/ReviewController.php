@@ -17,15 +17,7 @@ class ReviewController extends Controller
             'comment' => 'nullable|string|max:500',
         ]);
 
-        // check if the user has made a purchase for the product
 
-  /*      $order = Order::where('user_id', Auth::id())
-                      ->whereHas('cart', function($query) use ($product) {
-                          $query->whereHas('cartItems', function($query) use ($product) {
-                              $query->where('product_id', $product->id);
-                          });
-                      })
-                      ->first();*/
 
         // check if the user has made a purchase for the product
         $order = Order::where('user_id', Auth::id())
@@ -70,7 +62,7 @@ class ReviewController extends Controller
         $product = Product::findOrFail($product_id);
 
         // Retrieve all the reviews associated with the product, and select only the comment  data
-        $reviews = $product->reviews()->select('comment')->get();
+        $reviews = $product->reviews()->select('comment','rating','user_id')->get();
 
         // Return the reviews data as a JSON response
         return response()->json($reviews);

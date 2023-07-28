@@ -45,5 +45,15 @@ class WishListController extends Controller
         return response()->json(['wishlist' => $wishlist]);
     }
 
+    public function getIDs()
+    {
+        // Assuming your user_favorite_persons table has 'user_id' and 'favorite_person_id' columns
+        $user = auth()->user();
+        $favoriteProductIds = $user->wishlists()->pluck('product_id');
+
+        return response()->json([
+            'favorite_product_ids' => $favoriteProductIds
+        ]);
+    }
 
 }

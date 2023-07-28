@@ -44,7 +44,7 @@ class OrderPlacedNotification extends Notification implements ShouldBroadcast
 
     public function via(object $notifiable): array
     {
-        return ['broadcast'];
+        return ['database','broadcast'];
     }
 
     /**
@@ -56,6 +56,22 @@ class OrderPlacedNotification extends Notification implements ShouldBroadcast
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
+    }
+
+
+    public function toDatabase($notifiable)
+    {
+        // Assuming the event sends the order data as follows
+        $order = $this->order;
+
+        $cartItem = $this->order->cartItems->first();
+        $productName = $cartItem->product->name ?? null;
+        $quantity = $cartItem->quantity ?? null;
+        return [
+            'product_name' => $productName,
+            'quantity' => $quantity,
+            'order_date' => $this->order->order_date,
+        ];
     }
 
     /**

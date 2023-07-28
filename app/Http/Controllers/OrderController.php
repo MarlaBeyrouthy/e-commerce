@@ -130,7 +130,7 @@ class OrderController extends Controller
             $productOwner = $product->user;
             $productName = $product->name; // Make sure you have this line
             $quantity = $cartItem['quantity']; // Make sure you have this line
-           // event(new NewOrder($order, $productOwner, $cartItem['quantity'], $product->name));
+
             event(new NewOrder($order, $productOwner, $quantity, $productName));
 
 

@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\OrderPlacedNotification;
 
+
 class SendOrderNotification
 {
     /**
@@ -21,16 +22,8 @@ class SendOrderNotification
     /**
      * Handle the event.
      */
-    /*public function handle(NewOrder $event): void
-    {
-        $order = $event->order;
 
-        // Implement your notification logic here
-        // You can use Laravel's notification system to send notifications to the product owner
-        // Send notification to the product owner
-        $productOwner = $order->product->user;
-        Notification::send($productOwner, new OrderPlacedNotification($order));
-    }*/
+
 
     public function handle(NewOrder $event): void
     {

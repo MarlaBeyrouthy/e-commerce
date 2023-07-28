@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
@@ -85,15 +86,22 @@ Route::group(["middleware"=>["auth:api"]],function (){
     //Review api
     Route::post('products/{product}/reviews', [ReviewController::class,"setReview"]);
 
+
+
     //wishlist api
     Route::get('wishlists/add', [WishlistController::class,'addToWishlist']);
     Route::delete('wishlist/{productId}', [WishlistController::class,'removeFromWishlist']);
     Route::get('wishlist', [WishlistController::class,'getWishlist']);
+    Route::get('wishlist/ID', [WishlistController::class,'getIDs']);
+
 
     //favorite api
     Route::get('favorites/add', [FavoriteController::class,'addFavorite']);
     Route::delete('favorites/{productId}', [FavoriteController::class,'removeFavorite']);
     Route::get('favorite', [FavoriteController::class,'getFavoriteUsers']);
+    Route::get('favorite/ID', [FavoriteController::class,'getIDs']);
+
+
 
     //Order api
     Route::post('orders/placeOrder', [OrderController::class,'placeOrder']);
@@ -129,5 +137,8 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::post('/reports', [ReportController::class, 'create_report']);
     Route::get('/reports', [ReportController::class, 'my_reports']);
 
+    //notification
+    Route::get('/notifications', [NotificationController::class,'index']);
+    Route::post('/notifications/{id}/mark-as-read', [NotificationController::class,'markAsRead']);
 });
 
