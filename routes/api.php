@@ -48,7 +48,6 @@ Route::post('password/email', [PasswordResetController::class, 'sendResetCode'])
 Route::post('password/reset', [PasswordResetController::class, 'resetPasswordWithCode']);
 
 //Product api
-Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('search', [ProductController::class, 'search']);
 Route::post('/products/filters/show', [ProductController::class, 'filters']);
@@ -56,7 +55,7 @@ Route::post('/products/filters/show', [ProductController::class, 'filters']);
 //review api
 Route::get('products/{product_id}/reviews', [ReviewController::class, 'showProductReviews']);
 
-//Noor test photo api
+//Noore test photo api
 Route::get('/photos', [ProductController::class, 'showphoto']);
 Route::post('/photos', [ProductController::class, 'putphoto']);
 
@@ -69,10 +68,12 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::get("logout",[UserController::class,"logout"]);
 
     //product api
+    Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::post('/products', [ProductController::class, 'create']);
     Route::post('/products/{id}', [ProductController::class, 'update']);
     Route::post('/products/change/status', [ProductController::class, 'change_status']);
     Route::post('/products/change/prices', [ProductController::class, 'change_prices']);
+    Route::post('/products/set/sales', [ProductController::class, 'setSales']);
     Route::delete('/products/{id}', [ProductController::class, 'delete']);
     Route::post('/user/products', [ProductController::class, 'my_products']);
 
@@ -119,11 +120,13 @@ Route::group(["middleware"=>["auth:api"]],function (){
         Route::delete('/dashboard/products/{id}', [DashboardController::class, 'deleteProduct']);
         Route::delete('/dashboard/users/{id}', [DashboardController::class, 'deleteUser']);
         Route::put('/dashboard/users/{id}/ban', [DashboardController::class, 'BanUser']);
+        Route::put('/dashboard/users/{id}/unban', [DashboardController::class, 'unBanUser']);
         Route::get('/dashboard/history/orders', [DashboardController::class, 'getOrders']);
         Route::get('/dashboard/products/search', [DashboardController::class, 'searchProducts']);
         Route::get('/dashboard/users/search', [DashboardController::class, 'searchUsers']);
         Route::get('/dashboard/users/{userId}/orders', [DashboardController::class, 'getUserOrders']);
         Route::get('/dashboard/sellers', [DashboardController::class, 'getSellers']);
+        Route::get('/dashboard/workers', [DashboardController::class, 'getWorkers']);
         Route::get('/dashboard/users/{userId}', [DashboardController::class, 'showUser']);
         Route::get('/dashboard/users', [DashboardController::class, 'indexUsers']);
         Route::get('/dashboard/products/{productId}', [DashboardController::class, 'showProduct']);
