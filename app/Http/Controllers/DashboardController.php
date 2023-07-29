@@ -88,6 +88,9 @@ class DashboardController extends Controller
     public function unBanUser($id)
     {
     $User = User::findOrFail($id);
+    if($User->permission_id!=4){
+        return response()->json(['message' => 'the user is not banned from selling'],403);
+    }
     $User->permission_id =1;
     $User->save();
     return response()->json(['message' => 'User unbanned successfully']);
