@@ -64,7 +64,9 @@ class DashboardController extends Controller
     public function deleteUser($id)
     {
     $User = User::findOrFail($id);
-
+    if($User->permission_id==2){
+        return response()->json(['message' => 'forbidden'],403);
+    }
     $User->delete();
 
     return response()->json(['message' => 'User deleted successfully']);
@@ -76,10 +78,19 @@ class DashboardController extends Controller
 
     $User->products()->delete();
     Storage::delete('public/products_photos/'.$id);
-    $User->permission_id =3;
+    $User->permission_id =4;
     $User->save();
 
     return response()->json(['message' => 'User banned successfully']);
+    }
+
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    public function unBanUser($id)
+    {
+    $User = User::findOrFail($id);
+    $User->permission_id =1;
+    $User->save();
+    return response()->json(['message' => 'User unbanned successfully']);
     }
 
     public function getOrders()
@@ -126,7 +137,7 @@ class DashboardController extends Controller
                                         ->orWhere('email', 'like', "%$query%")
                                         ->get();
 
-        return response()->json(['products' => $users]);
+        return response()->json(['users' => $users]);
     }
 
     public function getUserOrders($userId)
@@ -150,6 +161,17 @@ class DashboardController extends Controller
         'Sellers' => $Sellers,
     ]);
 }
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+public function getWorkers()
+{
+    $workers = User::where('permission_id', 3);
+
+    return response()->json([
+        'workers' => $workers,
+    ]);
+}
+
+
 public function showUser($userId)
 {
     $user = User::findOrFail($userId)->makeHidden('password');
@@ -170,7 +192,9 @@ public function indexUsers()
 public function showProduct($productId)
 {
     $product = Product::with(['colors'])->findOrFail($productId);
-
+    $product->sizes = json_decode($product->sizes, true);
+    $product->color_names = $product->colors->pluck('color');
+    $product = $product->makeHidden(['user','colors']);
     return response()->json([
         'product' => $product,
     ]);
@@ -215,36 +239,3 @@ public function showOrder($orderId)
     }
 
 }
-
-
-
-
-/*
-
-//dashboard api
-Route::group(['middleware' => 'Dashboard'], function () {
-Route::get('/dashboard/reports', [DashboardController::class, 'showReports']);
-Route::get('/dashboard/users/{userId}/reports', [DashboardController::class, 'getUserReports']);
-Route::post('/dashboard/reports/check', [DashboardController::class, 'checkReports']);
-Route::delete('/dashboard/products/{id}', [DashboardController::class, 'deleteProduct']);
-Route::delete('/dashboard/users/{id}', [DashboardController::class, 'deleteUser']);
-Route::put('/dashboard/users/{id}/ban', [DashboardController::class, 'BanUser']);
-Route::get('/dashboard/orders', [DashboardController::class, 'getOrders']);
-Route::get('/dashboard/products/search', [DashboardController::class, 'searchProducts']);
-Route::get('/dashboard/users/search', [DashboardController::class, 'searchUsers']);
-Route::get('/dashboard/users/{userId}/orders', [DashboardController::class, 'getUserOrders']);
-Route::get('/dashboard/sellers', [DashboardController::class, 'getSellers']);
-Route::get('/dashboard/users/{userId}', [DashboardController::class, 'showUser']);
-Route::get('/dashboard/users', [DashboardController::class, 'indexUsers']);
-Route::get('/dashboard/products/{productId}', [DashboardController::class, 'showProduct']);
-Route::get('/dashboard/products', [DashboardController::class, 'indexProducts']);
-Route::get('/dashboard/orders/{orderId}', [DashboardController::class, 'showOrder']);
-Route::get('/dashboard/orders', [DashboardController::class, 'indexOrders']);
-Route::post('/dashboard/products/filter', [DashboardController::class, 'index_with_filter']);
-});
-
-//reports api
-Route::post('/reports', [ReportController::class, 'create_report']);
-Route::get('/reports', [ReportController::class, 'my_reports']);
-
-*/
