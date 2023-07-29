@@ -81,9 +81,11 @@ class ProductController extends Controller
         $product = Product::with([ 'colors','user'])->findOrFail($id);
         //don't worry if you see an errors because it's normal and it's working
         $product->user_name = $product->user->name;
+        $product->user_photo = $product->user->photo_profile;
         $product->sizes = json_decode($product->sizes, true);
         //$product->url = Storage::url($product->photo);
-        $product = $product->makeHidden(['user']);
+        $product->color_names = $product->colors->pluck('color');
+        $product = $product->makeHidden(['user','colors']);
         $product->colors->makeHidden('pivot');
         /*
         //checking if this product is mine
@@ -291,9 +293,29 @@ class ProductController extends Controller
         return  $products;
     }
 
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    public function setSales(Request $request)
+    {
+        $validatedData = $request->validate([
+        'products' => 'required|array|min:1',
+        'products.*' => 'exists:products,id',
+        'sale' => 'required|integer|min:0|max:100',
+     ]);
+        $ids=$validatedData['products'];
+        foreach ($ids as $id) {
+            $product = Product::find($id);
+            if (auth()->user()->id !== $product->user_id) {
+                return response()->json(['message' => 'forbidden'],403);
+           }
+           $product->sale= $validatedData['sale'];
+           $product->save();
+        }
+    return response()->json(['message' => 'Products sales updated successfully']);
+    }
+
 
 /////////////////////////////////////////////////////////   for Noore only
-
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 public function putphoto(Request $request)
 {
     $request->validate([
@@ -306,43 +328,11 @@ public function putphoto(Request $request)
     $url = Storage::url($photo);
      return response()->json(['photo' => $url]);
 }
-
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 public function showphoto()
 {
     $url = Storage::url('public/test_photos/noore.jpg');
      return response()->json(['photo' => $url]);
-}
-
-public function showProductPhoto($productId)
-{
-    $product = Product::findOrFail($productId);
-
-    // Check if the product has a photo
-    if (!$product->photo) {
-        abort(404);
-    }
-
-    // Get the full path of the photo
-    $photoPath = storage_path('app/' . $product->photo);
-
-    // Check if the photo file exists
-    if (!file_exists($photoPath)) {
-        abort(404);
-    }
-
-    // Read the photo file
-    $photoData = file_get_contents($photoPath);
-
-    // Get the MIME type of the photo
-    $photoMime = mime_content_type($photoPath);
-
-    // Create a file response with the photo data and MIME type
-    $response = response($photoData, 200, [
-        'Content-Type' => $photoMime,
-        'Content-Disposition' => 'inline; filename="' . basename($photoPath) . '"',
-    ]);
-
-    return $response;
 }
 
 }
