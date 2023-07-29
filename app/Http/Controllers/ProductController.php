@@ -87,14 +87,14 @@ class ProductController extends Controller
         $product->color_names = $product->colors->pluck('color');
         $product = $product->makeHidden(['user','colors']);
         $product->colors->makeHidden('pivot');
-        /*
+        
         //checking if this product is mine
         $my_product=false;
         if (auth()->user()->id == $product->user_id) {
             $my_product=true;
         }
         $product->my_product = $my_product;
- */
+ 
         return response()->json($product);
     }
 
