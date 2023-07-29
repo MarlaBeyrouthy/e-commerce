@@ -19,7 +19,7 @@ class CartItemController extends Controller
         ]);
        // print_r($validatedData['size']);
         $product = Product::find($validatedData['product_id']);
-        $price = $product->price * $validatedData['quantity'];
+        $price = $product->price * $validatedData['quantity'] * (1 - ($product->sale / 100));
 
 
         if (!$product->colors()->where('color_id', $validatedData['color_id'])->exists()) {
@@ -115,7 +115,7 @@ class CartItemController extends Controller
 
 
         $product = Product::find($cart[$index]['product_id']);
-        $price = $product->price * $validatedData['quantity'];
+        $price = $product->price * $validatedData['quantity'] * (1 - ($product->sale / 100));
 
         if (!$product->colors()->where('color_id', $validatedData['color_id'])->exists()) {
             return response()->json([
