@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
             'address' => 'damas',
             'phone' =>'09111111',
             'contact' => 'hello',
-            'permission_id'=>3,
+            'permission_id'=>4,
         ]]);
         //
     }
