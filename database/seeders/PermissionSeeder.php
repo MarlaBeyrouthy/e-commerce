@@ -16,9 +16,8 @@ class PermissionSeeder extends Seeder
         DB::table('permissions')->insert([
          ['permission' => 'user'],
          ['permission' => 'admin'],
-            ['permission' => 'work'],
-
-
+         ['permission' => 'work'],
+         ['permission' => 'banned_user'],
         ]);
 
     }

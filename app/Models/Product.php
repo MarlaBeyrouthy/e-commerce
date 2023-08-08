@@ -20,6 +20,7 @@ class Product extends Model
         'photo',
         'quantity',
         'in_stock',
+        'sale',
         'sizes'
 
     ];

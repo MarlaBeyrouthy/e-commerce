@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->json('sizes');
             $table->integer('quantity');
+            $table->integer('sale')->default(0);
             $table->boolean('in_stock')->default(true);
             $table->decimal('average_rating', 3, 2)->nullable();
             $table->timestamps();
