@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\RefreshToken;
@@ -131,8 +132,6 @@ class UserController extends Controller
             "access_token"=>$token,
         ], 200);
     }
-
-
 
     public function sendConfirmationCode(Request $request)
     {
@@ -451,5 +450,19 @@ class UserController extends Controller
 
     }
 
+    public function checkPassword(Request $request)
+    {
+        $inputPassword  = $request->input( 'password' );
+        $hashedPassword = auth()->user()->password;
 
+        if ( Hash::check( $inputPassword, $hashedPassword ) ) {
+            return response()->json( [
+                'message' => 'Valid password'
+            ] );
+        } else {
+            return response()->json( [
+                'message' => 'Invalid password'
+            ] );
+        }
+    }
 }

@@ -172,18 +172,14 @@
             console.log('Product Name:', data.order.product_name);
             console.log('Quantity:', data.order.quantity);
             console.log('Order Date:', data.order.order_date);
-            // console.log('Total price:', data.order.total_price);
-            // console.log('Shipping Address:', data.order.shipping_address);
+
         });
 
-     /*    Echo.private('user.{$userId}')
-         .notification( (data) => {
-         console.log('New Order:');
-         console.log('Product Name:', data.order.product_name);
-         console.log('Quantity:', data.order.quantity);
-         console.log('Order Date:', data.order.order_date);
+         Echo.channel('empty-product')
+         .listen( 'ProductQuantityEmpty',(data) => {
+             console.log('empty-product:',data)
 
-     });*/
+     });
     }
 
 

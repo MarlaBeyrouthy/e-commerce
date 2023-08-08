@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Place;
 use App\Models\Product;
 use App\Models\User;
+use App\Notifications\ProductQuantityEmptyNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -133,6 +134,10 @@ class OrderController extends Controller
 
             event(new NewOrder($order, $productOwner, $quantity, $productName));
 
+            if ($product->quantity <= 0) {
+                $seller = $product->user; // Assuming you have a relationship set up
+                $seller->notify(new ProductQuantityEmptyNotification($product));
+            }
 
         }
 

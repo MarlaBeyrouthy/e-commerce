@@ -28,6 +28,7 @@ class NewOrder implements ShouldBroadcastNow
 
 
 
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -71,6 +72,7 @@ class NewOrder implements ShouldBroadcastNow
             ],
         ];
     }
+
 
 
 

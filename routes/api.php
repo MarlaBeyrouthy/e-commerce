@@ -67,6 +67,8 @@ Route::group(["middleware"=>["auth:api"]],function (){
     Route::get("getProfile/{id}",[UserController::class,"getProfile"]);
     Route::post("user/profile",[UserController::class,"updateProfile"]);
     Route::get("logout",[UserController::class,"logout"]);
+    Route::post("checkPassword",[UserController::class,"checkPassword"]);
+
 
     //product api
     Route::post('/products', [ProductController::class, 'create']);
