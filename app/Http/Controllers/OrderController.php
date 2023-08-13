@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductQuantityEmpty;
 use App\Mail\OrderChecked;
 use App\Mail\OrderPlaced;
 use App\Models\CartItem;
@@ -129,14 +130,23 @@ class OrderController extends Controller
             $product->quantity -= $cartItem['quantity'];
             $product->save();
             $productOwner = $product->user;
+            $userId = $productOwner->id;
             $productName = $product->name; // Make sure you have this line
             $quantity = $cartItem['quantity']; // Make sure you have this line
 
             event(new NewOrder($order, $productOwner, $quantity, $productName));
 
+            $message=  'Product quantity has reached zero: ' . $productName;
+
             if ($product->quantity <= 0) {
                 $seller = $product->user; // Assuming you have a relationship set up
-                $seller->notify(new ProductQuantityEmptyNotification($product));
+
+             //   $seller->notify(new ProductQuantityEmptyNotification($message));
+               // event(new ProductQuantityEmpty($product));
+             //   broadcast(new ProductQuantityEmpty($product))->toOthers();
+            //  $user->  notify(new ProductQuantityEmptyNotification($message));
+                event(new ProductQuantityEmpty($message, $userId));
+
             }
 
         }

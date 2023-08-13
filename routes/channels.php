@@ -20,11 +20,14 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 
-/*Broadcast::channel('new-order', function ($user) {
+/*Broadcast::channel('empty-product', function ($user) {
 
     return true;
 });*/
 
+Broadcast::channel('empty-product.{userId}', function ($user, $userId) {
+    return (int) $user->id === (int) $userId;
+});
 
 Broadcast::channel('new-order.{userId}', function ($user, $userId) {
     return (int) $user->id === (int) $userId;

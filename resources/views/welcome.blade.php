@@ -175,12 +175,36 @@
 
         });
 
-         Echo.channel('empty-product')
-         .listen( 'ProductQuantityEmpty',(data) => {
-             console.log('empty-product:',data)
+     /*    window.Echo.channel('empty-product')
+             .listen('ProductQuantityEmpty', (data) => {
+                 console.log(data.message);
+             });*/
 
-     });
-    }
+
+
+
+         Echo.private('empty-product.' + userId)
+             .listen('ProductQuantityEmpty', (data) => {
+                 console.log('Product quantity zero notification:', data.message);
+             });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     }
 
 
 
