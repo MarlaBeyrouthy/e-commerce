@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('sale')->default(0);
             $table->boolean('in_stock')->default(true);
-            $table->decimal('average_rating', 3, 2)->nullable();
+            $table->decimal('average_rating', 3, 2)->default(0);
             $table->timestamps();
 
         });
