@@ -70,7 +70,7 @@ class UserController extends Controller
         $this->validate( $request, [
             'name'     => 'required',
             'phone'    => 'required',
-            'permission_id'=> 'required',
+            'permission_id'=> 'required|in:1,3', // Only allow permission IDs 1 or 3
             'password' => 'required|string|min:8|confirmed',
             "address"=>"required",
             'city_id'  => 'required|exists:cities,id',
