@@ -48,6 +48,16 @@ class ProductQuantityEmpty implements ShouldBroadcastNow
     }
 
 
+
+    public function broadcastWith()
+    {
+        return [
+
+            'message' => $this->message,
+
+        ];
+    }
+
  /*   public function broadcastWith()
     {
         return [

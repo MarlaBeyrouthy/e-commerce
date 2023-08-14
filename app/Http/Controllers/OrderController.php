@@ -141,10 +141,8 @@ class OrderController extends Controller
             if ($product->quantity <= 0) {
                 $seller = $product->user; // Assuming you have a relationship set up
 
-             //   $seller->notify(new ProductQuantityEmptyNotification($message));
-               // event(new ProductQuantityEmpty($product));
-             //   broadcast(new ProductQuantityEmpty($product))->toOthers();
-            //  $user->  notify(new ProductQuantityEmptyNotification($message));
+              // $seller->notify(new ProductQuantityEmptyNotification($message, $userId));
+
                 event(new ProductQuantityEmpty($message, $userId));
 
             }

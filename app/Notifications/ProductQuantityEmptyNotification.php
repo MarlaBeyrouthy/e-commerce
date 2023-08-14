@@ -35,7 +35,7 @@ class ProductQuantityEmptyNotification extends Notification implements ShouldBro
      */
     public function via(object $notifiable): array
     {
-        return ['broadcast'];
+        return ['broadcast','database'];
     }
 
     /**
@@ -55,19 +55,26 @@ class ProductQuantityEmptyNotification extends Notification implements ShouldBro
      *
      * @return array<string, mixed>
      */
+
+
+
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'message' => $this->message,
+
         ];
     }
-/*    public function toDatabase($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            'message' => $this->data['message'],
-            // Include more data if needed
+            'message' => $this->message,
         ];
-    }*/
+   /*     return new BroadcastMessage([
+            'message' => $this->message,
+
+        ]);*/
+    }
 
     /**
      * Get the array representation of the notification.
@@ -76,6 +83,7 @@ class ProductQuantityEmptyNotification extends Notification implements ShouldBro
      *
      * @return BroadcastMessage
      */
+
 
     public function toBroadcast($notifiable): BroadcastMessage {
         return new BroadcastMessage([

@@ -190,6 +190,17 @@
 
 
 
+       /*  Echo.private('empty-product.' + userId)
+             .notification((notification) => {
+                 console.log('Product Quantity Empty Notification:', notification.message);
+                 // You can perform any action here when the notification is received
+             });*/
+
+
+
+
+
+
 
 
 
