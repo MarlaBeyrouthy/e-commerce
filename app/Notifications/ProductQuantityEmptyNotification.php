@@ -70,10 +70,7 @@ class ProductQuantityEmptyNotification extends Notification implements ShouldBro
         return [
             'message' => $this->message,
         ];
-   /*     return new BroadcastMessage([
-            'message' => $this->message,
 
-        ]);*/
     }
 
     /**
@@ -87,8 +84,7 @@ class ProductQuantityEmptyNotification extends Notification implements ShouldBro
 
     public function toBroadcast($notifiable): BroadcastMessage {
         return new BroadcastMessage([
-           // 'product_id' => $this->product->id,
-           // 'message' => 'Product quantity has reached zero: ' . $this->product->name,
+
             'message'=>$this->message
         ]);
     }

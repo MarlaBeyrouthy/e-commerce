@@ -31,9 +31,7 @@ class ProductQuantityEmpty implements ShouldBroadcastNow
         $this->message = $message;
         $this->productOwnerId = $productOwnerId;
 
-
     }
-
 
     /**
      * Get the channels the event should broadcast on.
@@ -47,23 +45,12 @@ class ProductQuantityEmpty implements ShouldBroadcastNow
         ];
     }
 
-
-
     public function broadcastWith()
     {
         return [
-
             'message' => $this->message,
-
         ];
     }
 
- /*   public function broadcastWith()
-    {
-        return [
-            'product_id' => $this->product->id,
-            'message' => 'Product quantity has reached zero: ' . $this->product->name,
-        ];
-    }*/
 
 }

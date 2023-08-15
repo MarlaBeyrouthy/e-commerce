@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductQuantityEmpty;
+use App\Events\ProductSaleChanged;
 use App\Models\Product;
 use App\Models\Color;
 use App\Models\User;
+use App\Notifications\ProductSaleUpdatedNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -87,14 +91,14 @@ class ProductController extends Controller
         $product->color_names = $product->colors->pluck('color');
         $product = $product->makeHidden(['user','colors']);
         $product->colors->makeHidden('pivot');
-        
+
         //checking if this product is mine
         $my_product=false;
         if (auth()->user()->id == $product->user_id) {
             $my_product=true;
         }
         $product->my_product = $my_product;
- 
+
         return response()->json($product);
     }
 
@@ -303,14 +307,31 @@ class ProductController extends Controller
      ]);
         $ids=$validatedData['products'];
         foreach ($ids as $id) {
-            $product = Product::find($id);
-            if (auth()->user()->id !== $product->user_id) {
-                return response()->json(['message' => 'forbidden'],403);
-           }
-           $product->sale= $validatedData['sale'];
-           $product->save();
+            $product = Product::find( $id );
+            if ( auth()->user()->id !== $product->user_id ) {
+                return response()->json( [ 'message' => 'forbidden' ], 403 );
+            }
+
+            $oldSale       = $product->sale;
+            $product->sale = $validatedData['sale'];
+            $product->save();
+
+            $wishlistUsers = DB::table( 'wishlists' )
+                               ->where( 'product_id', $product->id )
+                               ->pluck( 'user_id' )
+                               ->toArray();
+            $message=  'Hurry up! new sale: ' . $product->sale. '% for the product: ' .$product->name;
+
+            foreach ( $wishlistUsers as $userId ) {
+                $user = User::find( $userId );
+                if ( $user ) {
+                    event(new ProductSaleChanged($message, $userId));
+                }
+            }
         }
-    return response()->json(['message' => 'Products sales updated successfully']);
+
+
+            return response()->json(['message' => 'Products sales updated successfully']);
     }
 
 

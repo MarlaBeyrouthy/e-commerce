@@ -185,16 +185,22 @@
 
          Echo.private('empty-product.' + userId)
              .listen('ProductQuantityEmpty', (data) => {
-                 console.log('Product quantity zero notification:', data.message);
+                 console.log( data.message);
+             });
+
+         Echo.private('product-sale.' + userId)
+             .listen('ProductSaleChanged', (data) => {
+                 console.log( data.message);
              });
 
 
 
-       /*  Echo.private('empty-product.' + userId)
+  /*      Echo.private('empty-product.' + userId)
              .notification((notification) => {
-                 console.log('Product Quantity Empty Notification:', notification.message);
+                 console.log('Product Quantity Empty Notification:', notification.message2);
                  // You can perform any action here when the notification is received
              });*/
+
 
 
 

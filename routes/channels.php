@@ -29,6 +29,10 @@ Broadcast::channel('empty-product.{userId}', function ($user, $userId) {
     return (int) $user->id === (int) $userId;
 });
 
+Broadcast::channel('product-sale.{userId}', function ($user, $userId) {
+    return (int) $user->id === (int) $userId;
+});
+
 Broadcast::channel('new-order.{userId}', function ($user, $userId) {
     return (int) $user->id === (int) $userId;
 });
