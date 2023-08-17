@@ -14,7 +14,7 @@ class WishListController extends Controller
         return response()->json(['message' => 'Product added to wishlist.']);
     }*/
 
-    public function addToWishlist(Request $request)
+/*    public function addToWishlist(Request $request)
     {
         $productId = $request->query('productId');
         $user = auth()->user();
@@ -22,6 +22,22 @@ class WishListController extends Controller
 
        // print_r($productId);
        // dd($request->all());
+        return response()->json(['message' => 'Product added to wishlist.']);
+    }*/
+
+    public function addToWishlist(Request $request)
+    {
+        $productId = $request->query('productId');
+        $user = auth()->user();
+
+        // Check if the product is already in the user's wishlist
+        if ($user->wishlists()->where('product_id', $productId)->exists()) {
+            return response()->json(['message' => 'Product is already in the wishlist.'], 400);
+        }
+
+        // Attach the product to the wishlist
+        $user->wishlists()->attach($productId);
+
         return response()->json(['message' => 'Product added to wishlist.']);
     }
 
@@ -33,8 +49,6 @@ class WishListController extends Controller
 
         return response()->json(['message' => 'Product removed from wishlist.']);
     }
-
-
 
     public function getWishlist(Request $request)
     {

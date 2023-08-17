@@ -148,7 +148,6 @@ class CartItemController extends Controller
             'cart_item' => $cart[$index],]);
     }
 
-
     public function DeleteCartItem($index)
     {
         // Get the cart from the session

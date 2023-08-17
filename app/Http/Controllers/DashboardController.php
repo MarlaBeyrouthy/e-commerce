@@ -35,7 +35,6 @@ class DashboardController extends Controller
         ]);
     }
 
-
     public function checkReports(Request $request)
     {
         $validatedData = $request->validate([
@@ -102,6 +101,7 @@ class DashboardController extends Controller
         $startDate = Carbon::now()->subDays(15)->startOfDay(); // 15 days ago
         return $this->generateSalesReport($startDate, $endDate);
     }
+
     public function generateSalesReport($startDate, $endDate)
     {
         $orders = Order::whereBetween('created_at', [$startDate, $endDate])->get();
@@ -119,7 +119,6 @@ class DashboardController extends Controller
         ]);
     }
 
-
     public function searchProducts(Request $request)
     {
         $query = $request->input('s');
@@ -130,7 +129,6 @@ class DashboardController extends Controller
 
         return response()->json(['products' => $products]);
     }
-
 
     public function searchUsers(Request $request)
     {
@@ -157,6 +155,7 @@ class DashboardController extends Controller
             'user' => $user,
         ]);
     }
+
     public function getSellers()
 {
     $Sellers = User::has('products')->get()->makeHidden('password');
@@ -174,7 +173,6 @@ public function getWorkers()
     ]);
 }
 
-
 public function showUser($userId)
 {
     $user = User::findOrFail($userId)->makeHidden('password');
@@ -183,6 +181,7 @@ public function showUser($userId)
         'user' => $user,
     ]);
 }
+
 public function indexUsers()
 {
     $users = User::all()->makeHidden('password');
@@ -190,7 +189,6 @@ public function indexUsers()
         'users' => $users,
     ]);
 }
-
 
 public function showProduct($productId)
 {
@@ -202,6 +200,7 @@ public function showProduct($productId)
         'product' => $product,
     ]);
 }
+
 public function indexProducts()
 {
     $products = Product::all();
@@ -210,7 +209,6 @@ public function indexProducts()
         'products' => $products,
     ]);
 }
-
 
 public function showOrder($orderId)
 {
@@ -223,7 +221,8 @@ public function showOrder($orderId)
         'orderItems' => $orderItems,
     ]);
 }
-    public function indexOrders()
+
+public function indexOrders()
     {
         $orders =Order::all();
 
@@ -231,8 +230,6 @@ public function showOrder($orderId)
             'orders' => $orders,
         ]);
     }
-
-
 
     public function index_with_filter(Request $request)
     {

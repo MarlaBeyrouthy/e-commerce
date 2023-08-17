@@ -159,10 +159,6 @@ class OrderController extends Controller
         ]);
     }
 
-
-
-
-
     public function showOrder(Order $order)
     {
         $order = $order->load('cartItems.product', 'cartItems.color');
@@ -175,7 +171,6 @@ class OrderController extends Controller
        // $orders = $user->orders()->get();
         return response()->json($orders);
     }
-
 
     public function checkOrder($id)
     {

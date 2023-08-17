@@ -39,11 +39,6 @@ class FavoriteController extends Controller
 
     }
 
-
-
-
-
-
     public function getIDs()
     {
         // Assuming your user_favorite_persons table has 'user_id' and 'favorite_person_id' columns
