@@ -85,7 +85,7 @@ class ProductController extends Controller
         $product = Product::with([ 'colors','user'])->findOrFail($id);
         //don't worry if you see an errors because it's normal and it's working
         $product->user_name = $product->user->name;
-        $product->user_photo = $product->user->photo_profile;
+        $product->user_photo = $product->user->photo;
         $product->sizes = json_decode($product->sizes, true);
         //$product->url = Storage::url($product->photo);
         $product->color_names = $product->colors->pluck('color');
