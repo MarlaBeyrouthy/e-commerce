@@ -68,6 +68,28 @@ class User2Seeder extends Seeder
             'photo'=> 'uploads/users_photo/test',
             'photo_profile'=> 'uploads/users_photo/test',
             'permission_id'=>1,
+        ],[
+            'Id'=> 110,
+            'name' => 'worker1',
+            'email' =>'worker1@gmail.com',
+            'password' => bcrypt('12341234'),
+            'address' => 'damas','bio'=>'none','city_id'=>1,'place_id'=>1,
+            'phone' =>'09111111',
+            'contact' => 'hello',
+            'photo'=> 'uploads/users_photo/test',
+            'photo_profile'=> 'uploads/users_photo/test',
+            'permission_id'=>3,
+        ],[
+            'Id'=> 111,
+            'name' => 'worker2',
+            'email' =>'worker2@gmail.com',
+            'password' => bcrypt('12341234'),
+            'address' => 'damas','bio'=>'none','city_id'=>1,'place_id'=>1,
+            'phone' =>'09111111',
+            'contact' => 'hello',
+            'photo'=> 'uploads/users_photo/test',
+            'photo_profile'=> 'uploads/users_photo/test',
+            'permission_id'=>3,
         ]]);
         //
     }
