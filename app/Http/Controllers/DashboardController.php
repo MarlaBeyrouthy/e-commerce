@@ -166,7 +166,7 @@ class DashboardController extends Controller
 //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 public function getWorkers()
 {
-    $workers = User::where('permission_id', 3);
+    $workers = User::where('permission_id', 3)->get();
 
     return response()->json([
         'workers' => $workers,
