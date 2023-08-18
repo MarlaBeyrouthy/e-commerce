@@ -17,19 +17,19 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $f = $this->faker->randomElement([ 'shoes' , 'shirts' , 'pants', 'shorts', 'watches',
+        'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress']);
         return [
             'name' => $this->faker->words(2, true), // Generate a random product name
                 'description' => $this->faker->paragraph,
                 'price' => $this->faker->randomFloat(2, 10, 100),
-                'category' => $this->faker->randomElement([ 'shoes' , 'shirts' , 'pants', 'shorts', 'watches',
-                'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress']),
+                'category' => $f,
 
                 'gender' => $this->faker->randomElement(['men', 'women', 'boys','girls']),
                 'brand_name' => $this->faker->company,
                 'user_id' => $this->faker->numberBetween(100, 104),
                 'material' => $this->faker->word,
-                'photo' => 'fake_products/' .$this->faker->randomElement([ 'shoes' , 'shirts' , 'pants', 'shorts', 'watches',
-                'bags', 'accessories', 'sport wears', 'jackets', 'hats', 'dress']). '.jpg',
+                'photo' => 'fake_products/' .$f.$this->faker->numberBetween(1, 2). '.jpg',
 
                 'sizes' => json_encode($this->faker->randomElements(['S', 'M', 'L', 'XL'], $this->faker->numberBetween(1, 3))),
                 'quantity' => $this->faker->numberBetween(10, 100),
